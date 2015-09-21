@@ -17,24 +17,18 @@ package com.qantium.uisteps.serenity;
 
 //import com.qantium.uisteps.core.user.browser.Browser;
 import com.qantium.uisteps.thucydides.ThucydidesUtils;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.Properties;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.SerenitySystemProperties;
 import net.thucydides.core.ThucydidesSystemProperty;
 import net.thucydides.core.guice.Injectors;
-import net.thucydides.core.steps.BaseStepListener;
-import net.thucydides.core.steps.StepEventBus;
 import net.thucydides.core.steps.StepFactory;
 import net.thucydides.core.steps.StepListener;
 import net.thucydides.core.webdriver.Configuration;
 import net.thucydides.core.webdriver.WebdriverManager;
 import net.thucydides.core.webdriver.SupportedWebDriver;
 import net.thucydides.core.webdriver.ThucydidesWebdriverManager;
-import net.thucydides.core.webdriver.WebdriverInstances;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -43,7 +37,6 @@ import org.openqa.selenium.WebDriver;
  */
 public class SerenityUtils extends Serenity {
     
-    public static String BROWSER_SESSION_KEY = "#BROWSER#";
     private static int driverCounter = 0;
     
     public void m() {
@@ -51,7 +44,7 @@ public class SerenityUtils extends Serenity {
     }
 
     public static Browser getCurrentBrowser() {
-        return (Browser) getFromSession(BROWSER_SESSION_KEY);
+        return (Browser) getFromSession(ThucydidesUtils.BROWSER_SESSION_KEY);
     }
 
     public static <T> T getNewStepLibrary(Class<T> stepLibraryClass) {
