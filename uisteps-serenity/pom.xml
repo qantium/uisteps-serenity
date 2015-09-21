@@ -18,7 +18,7 @@
     <repositories>
         <repository>
             <id>github</id>
-            <url>https://github.com/qantium/uisteps-core</url>
+            <url>https://github.com/qantium/uisteps-thucydides</url>
         </repository>
     </repositories>
     
@@ -63,7 +63,7 @@
     <dependencies>
         <dependency>
             <groupId>com.qantium</groupId>
-            <artifactId>uisteps-core</artifactId>
+            <artifactId>uisteps-thucydides</artifactId>
             <version>1.0</version>
             <type>jar</type>
         </dependency>
