@@ -15,7 +15,6 @@
  */
 package com.qantium.uisteps.serenity;
 
-//import com.qantium.uisteps.core.user.browser.Browser;
 import com.qantium.uisteps.thucydides.ThucydidesUtils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -23,87 +22,32 @@ import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.SerenitySystemProperties;
 import net.thucydides.core.ThucydidesSystemProperty;
 import net.thucydides.core.guice.Injectors;
-import net.thucydides.core.steps.StepFactory;
-import net.thucydides.core.steps.StepListener;
-import net.thucydides.core.webdriver.Configuration;
 import net.thucydides.core.webdriver.WebdriverManager;
-import net.thucydides.core.webdriver.SupportedWebDriver;
 import net.thucydides.core.webdriver.ThucydidesWebdriverManager;
-import org.openqa.selenium.WebDriver;
 
 /**
  *
  * @author A.Solyankin
  */
-public class SerenityUtils extends Serenity {
-    
-    private static int driverCounter = 0;
-    
-    public void m() {
-        
+public class SerenityUtils extends ThucydidesUtils {
+
+    @Override
+    public void putToSession(String key, Object value) {
+        Serenity.getCurrentSession().put(key, value);
     }
 
-    public static Browser getCurrentBrowser() {
-        return (Browser) getFromSession(ThucydidesUtils.BROWSER_SESSION_KEY);
+    @Override
+    public Object getFromSession(String key) {
+        return Serenity.getCurrentSession().get(key);
     }
 
-    public static <T> T getNewStepLibrary(Class<T> stepLibraryClass) {
-        return ThucydidesUtils.getNewStepLibrary(stepLibraryClass);
-    }
-    
-    public static StepFactory getStepFactory() {
-        return ThucydidesUtils.getStepFactory();
+    @Override
+    public Integer getImplementTimeout() {
+        return SerenitySystemProperties.getProperties().getIntegerValue(ThucydidesSystemProperty.WEBDRIVER_TIMEOUTS_IMPLICITLYWAIT, 100000);
     }
 
-    public static String getBaseUrl() {
-        return ThucydidesUtils.getBaseUrl();
-    }
-
-    public static void putToSession(String key, Object value) {
-        getCurrentSession().put(key, value);
-    }
-
-    public static Object getFromSession(String key) {
-        return getCurrentSession().get(key);
-    }
-
-    public static void registerListener(StepListener stepsListener) {
-        ThucydidesUtils.registerListener(stepsListener);
-    }
-
-    public static Configuration getConfiguration() {
-        return ThucydidesUtils.getConfiguration();
-    }
-
-    public static Integer getImplementTimeout() {
-        return getSystemProperties().getIntegerValue(ThucydidesSystemProperty.WEBDRIVER_TIMEOUTS_IMPLICITLYWAIT, 100000);
-    }
-
-    public static SerenitySystemProperties getSystemProperties() {
-        return SerenitySystemProperties.getProperties();
-    }
-
-    public static Integer getImplementTimeoutInSec() {
-        return getImplementTimeout() / 1000;
-    }
-
-    public static WebDriver getNewDriver() {
-        return getNewDriver(getConfiguration().getDriverType());
-    }
-
-    public static WebDriver getNewDriver(SupportedWebDriver supportedDriver) {
-
-        String driverName = "#" + (++driverCounter);
-        String driverType = supportedDriver.name().toLowerCase();
-        WebDriver driver = getWebdriverManager().getWebdriver(driverType);
-
-        ThucydidesUtils.getDrivers().registerDriverCalled(driverName).forDriver(driver);
-        ThucydidesUtils.getBaseStepListener().setDriver(driver);
-        ThucydidesUtils.getDriversMap().remove(driverType);
-        return driver;
-    }
-
-    public static WebdriverManager getWebdriverManager() {
+    @Override
+    public WebdriverManager getWebdriverManager() {
         WebdriverManager webdriverManager = null;
         String methodName = "getWebdriverManager";
 
