@@ -17,6 +17,7 @@ package com.qantium.uisteps.serenity.browser;
 
 import com.qantium.uisteps.core.browser.pages.UIObjectInitializer;
 import com.qantium.uisteps.serenity.SerenityUtils;
+import com.qantium.uisteps.serenity.browser.pages.UIObjectFactory;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -26,11 +27,11 @@ import org.openqa.selenium.WebDriver;
 public class Browser extends com.qantium.uisteps.thucydides.browser.Browser {
 
     public Browser() {
-        super(new SerenityUtils().getImplementTimeout(), null, new UIObjectFactory());
+        super(new SerenityUtils().getCurrentDriver(), new UIObjectFactory(), new UIObjectInitializer(new SerenityUtils().getCurrentDriver()));
     }
 
-    public Browser(long timeOutInSeconds, WebDriver driver, com.qantium.uisteps.core.browser.pages.UIObjectFactory uiObjectFactory, UIObjectInitializer initializer) {
-        super(timeOutInSeconds, driver, uiObjectFactory, initializer);
+    public Browser(WebDriver driver, UIObjectFactory uiObjectFactory, UIObjectInitializer initializer) {
+        super(driver, uiObjectFactory, initializer);
     }
 
 }

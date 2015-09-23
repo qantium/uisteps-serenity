@@ -22,7 +22,7 @@ import com.qantium.uisteps.core.browser.pages.UIObject;
  *
  * @author A.Solyankin
  */
-public class UIObjectFactory implements com.qantium.uisteps.core.browser.pages.UIObjectFactory {
+public class UIObjectFactory extends com.qantium.uisteps.thucydides.browser.pages.UIObjectFactory {
 
     @Override
     public <T extends UIObject> T instatiate(Class<T> uiObject) {

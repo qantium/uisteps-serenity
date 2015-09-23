@@ -19,8 +19,6 @@ import com.qantium.uisteps.thucydides.ThucydidesUtils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import net.serenitybdd.core.Serenity;
-import net.serenitybdd.core.SerenitySystemProperties;
-import net.thucydides.core.ThucydidesSystemProperty;
 import net.thucydides.core.guice.Injectors;
 import net.thucydides.core.webdriver.WebdriverManager;
 import net.thucydides.core.webdriver.ThucydidesWebdriverManager;
@@ -39,11 +37,6 @@ public class SerenityUtils extends ThucydidesUtils {
     @Override
     public Object getFromSession(String key) {
         return Serenity.getCurrentSession().get(key);
-    }
-
-    @Override
-    public Integer getImplementTimeout() {
-        return SerenitySystemProperties.getProperties().getIntegerValue(ThucydidesSystemProperty.WEBDRIVER_TIMEOUTS_IMPLICITLYWAIT, 100000);
     }
 
     @Override

@@ -17,9 +17,7 @@ package com.qantium.uisteps.serenity.user;
 
 import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.serenity.SerenityUtils;
-import com.qantium.uisteps.thucydides.browser.BrowserFactory;
-import net.thucydides.core.webdriver.SupportedWebDriver;
-import org.openqa.selenium.WebDriver;
+import com.qantium.uisteps.serenity.browser.BrowserFactory;
 
 /**
  *
@@ -39,12 +37,7 @@ public class User extends com.qantium.uisteps.thucydides.user.User {
     protected Browser register(Browser browser) {
         SerenityUtils serenityUtils = new SerenityUtils();
         serenityUtils.putToSession(browser);
-        serenityUtils.getBaseStepListener().setDriver(browser.getDriver());
+        serenityUtils.getBaseStepListener().setDriver(serenityUtils.getCurrentDriver());
         return browser;
-    }
-
-    @Override
-    protected WebDriver getNewDriver(SupportedWebDriver driver) {
-        return new SerenityUtils().getNewDriver(driver);
     }
 }
