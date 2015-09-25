@@ -18,6 +18,7 @@ package com.qantium.uisteps.serenity;
 import com.qantium.uisteps.core.browser.Browser;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.UUID;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.SessionMap;
 import net.thucydides.core.guice.Injectors;
@@ -41,8 +42,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class SerenityUtils {
 
-    public static String BROWSER_SESSION_KEY = "#BROWSER#";
-    private static int driverCounter = 0;
+    public final static String BROWSER_SESSION_KEY = "#BROWSER#";
 
     public void putToSession(Browser browser) {
         putToSession(BROWSER_SESSION_KEY, browser);
@@ -93,7 +93,7 @@ public class SerenityUtils {
     }
 
     public WebDriver getNewDriver(SupportedWebDriver supportedDriver) {
-        String driverName = "#" + (++driverCounter);
+        String driverName = "" + UUID.randomUUID();
 
         WebDriverFactory webDriverFactory = new WebDriverFactory();
         Configuration configuration = getConfiguration();
@@ -103,18 +103,18 @@ public class SerenityUtils {
 
         EnvironmentVariables environmentVariables = configuration.getEnvironmentVariables();
         WebDriverFacade webDriverFacade = new ProxyWebDriverFacade(driverName, driver, webDriverFactory, environmentVariables);
-        
+
         WebdriverInstances drivers = getDrivers();
-        
+
         drivers.registerDriverCalled(driverName).forDriver(webDriverFacade);
         drivers.useDriver(driverName);
         return driver;
     }
-    
+
     public void useDriver(String driverName) {
         getDrivers().useDriver(driverName);
     }
-    
+
     public WebDriver getNewDriver(String driverType) {
         return getNewDriver(SupportedWebDriver.valueOf(driverType.toUpperCase()));
     }
