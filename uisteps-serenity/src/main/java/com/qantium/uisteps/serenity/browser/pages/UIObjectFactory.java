@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2014 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,14 @@
  */
 package com.qantium.uisteps.serenity.browser.pages;
 
-import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.core.browser.pages.UIObject;
+import com.qantium.uisteps.serenity.SerenityUtils;
 
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
-public class UIObjectFactory extends com.qantium.uisteps.thucydides.browser.pages.UIObjectFactory {
+public class UIObjectFactory implements com.qantium.uisteps.core.browser.pages.UIObjectFactory {
 
     @Override
     public <T extends UIObject> T instatiate(Class<T> uiObject) {

@@ -1,5 +1,6 @@
+
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2014 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +16,17 @@
  */
 package com.qantium.uisteps.serenity.browser.pages;
 
+import com.qantium.uisteps.core.name.Name;
 import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.core.browser.pages.Url;
-import com.qantium.uisteps.core.name.Name;
 import com.qantium.uisteps.serenity.SerenityUtils;
+import com.qantium.uisteps.serenity.name.NameConvertor;
 
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
-public class Page extends com.qantium.uisteps.thucydides.browser.pages.Page {
+public class Page extends com.qantium.uisteps.core.browser.pages.Page {
 
     public Page() {
         super(new UrlFactory());
@@ -44,6 +46,18 @@ public class Page extends com.qantium.uisteps.thucydides.browser.pages.Page {
 
     public Page(Url url) {
         super(url);
+    }
+
+    @Override
+    public Name getName() {
+
+        Name name = super.getName();
+
+        if (name.isDefault()) {
+            name.setValue(NameConvertor.humanize(getClass()));
+        }
+
+        return name;
     }
 
     @Override

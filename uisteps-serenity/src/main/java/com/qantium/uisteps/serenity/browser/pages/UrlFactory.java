@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2014 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,15 +17,16 @@ package com.qantium.uisteps.serenity.browser.pages;
 
 import com.qantium.uisteps.serenity.SerenityUtils;
 import java.lang.annotation.Annotation;
+import net.thucydides.core.annotations.DefaultUrl;
 
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
-public class UrlFactory extends com.qantium.uisteps.thucydides.browser.pages.UrlFactory {
+public class UrlFactory extends com.qantium.uisteps.core.browser.pages.UrlFactory {
 
     public UrlFactory() {
-        super();
+        super(DefaultUrl.class);
     }
 
     public UrlFactory(String host, Class<? extends Annotation> urlAnnotation) {
@@ -33,8 +34,22 @@ public class UrlFactory extends com.qantium.uisteps.thucydides.browser.pages.Url
     }
 
     @Override
+    protected Class<?> getPageClass(Class<?> clazz) {
+
+        if (clazz.getName().contains("$$")) {
+            return getPageClass(clazz.getSuperclass());
+        } else {
+            return clazz;
+        }
+    }
+
+    @Override
     protected String getBaseUrl() {
         return new SerenityUtils().getBaseUrl();
     }
 
+    @Override
+    protected String getPageUrlFrom(Annotation urlAnnotation) {
+        return ((DefaultUrl) urlAnnotation).value();
+    }
 }

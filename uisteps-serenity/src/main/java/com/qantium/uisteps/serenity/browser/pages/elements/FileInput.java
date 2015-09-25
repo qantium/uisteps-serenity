@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2015 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,9 @@ import org.openqa.selenium.WebElement;
 
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
-public class FileInput extends com.qantium.uisteps.thucydides.browser.pages.elements.FileInput {
+public class FileInput extends com.qantium.uisteps.core.browser.pages.elements.FileInput {
 
     public FileInput(WebElement wrappedElement) {
         super(wrappedElement);

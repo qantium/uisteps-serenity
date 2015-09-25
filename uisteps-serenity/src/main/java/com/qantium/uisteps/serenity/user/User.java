@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2015 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,54 @@
  */
 package com.qantium.uisteps.serenity.user;
 
-import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.serenity.SerenityUtils;
+import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.serenity.browser.BrowserFactory;
+import com.qantium.uisteps.core.browser.NoBrowserException;
+import net.thucydides.core.annotations.Step;
 
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
-public class User extends com.qantium.uisteps.thucydides.user.User {
+public class User extends com.qantium.uisteps.core.user.User {
 
     public User() {
-        this(new BrowserFactory());
+        super(new BrowserFactory());
     }
 
-    public User(BrowserFactory browserFactory) {
-        super(browserFactory);
-    }
-
-    @Override
-    protected Browser register(Browser browser) {
-        SerenityUtils serenityUtils = new SerenityUtils();
-        serenityUtils.putToSession(browser);
-        serenityUtils.getBaseStepListener().setDriver(serenityUtils.getCurrentDriver());
+    protected Browser use(Browser browser) {
+        new SerenityUtils().useDriver(((com.qantium.uisteps.serenity.browser.Browser) browser).getName());
         return browser;
+    }
+
+    @Step
+    @Override
+    public Browser switchToLastBrowser() {
+        return use(super.switchToLastBrowser());
+    }
+
+    @Step
+    @Override
+    public Browser switchToBrowserByIndex(int index) throws NoBrowserException {
+        return use(super.switchToBrowserByIndex(index));
+    }
+
+    @Step
+    @Override
+    public Browser switchToDefaultBrowser() {
+        return use(super.switchToDefaultBrowser());
+    }
+
+    @Step
+    @Override
+    public Browser switchToPreviousBrowser() {
+        return use(super.switchToPreviousBrowser());
+    }
+
+    @Step
+    @Override
+    public Browser switchToNextBrowser() {
+        return use(super.switchToNextBrowser());
     }
 }

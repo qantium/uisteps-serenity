@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2015 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,16 @@
 package com.qantium.uisteps.serenity.run;
 
 import com.qantium.uisteps.core.name.Named;
-import com.qantium.uisteps.thucydides.run.Listener;
-import com.qantium.uisteps.core.run.storage.Storage;
+import com.qantium.uisteps.serenity.run.storage.Storage;
+import com.qantium.uisteps.serenity.run.verify.Verify;
 import com.qantium.uisteps.serenity.SerenityUtils;
-import com.qantium.uisteps.thucydides.run.verify.Verify;
-import net.serenitybdd.jbehave.SerenityStories;
+import net.serenitybdd.jbehave.SerenityStory;
+
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
-public class Story extends SerenityStories {
+public class Story extends SerenityStory {
 
     public final Verify verify;
     public final Storage storage;

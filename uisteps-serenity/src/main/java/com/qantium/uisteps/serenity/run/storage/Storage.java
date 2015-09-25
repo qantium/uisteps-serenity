@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2015 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,16 @@
  */
 package com.qantium.uisteps.serenity.run.storage;
 
-import net.serenitybdd.core.Serenity;
+import com.qantium.uisteps.serenity.SerenityUtils;
 
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
 public class Storage extends com.qantium.uisteps.core.run.storage.Storage {
 
     public Storage() {
-        super(Serenity.getCurrentSession());
+        super(new SerenityUtils().getCurrentSession());
     }
 
 }

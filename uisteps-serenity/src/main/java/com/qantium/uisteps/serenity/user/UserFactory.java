@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2015 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,15 @@
  */
 package com.qantium.uisteps.serenity.user;
 
-import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.core.user.User;
+import com.qantium.uisteps.serenity.SerenityUtils;
+import net.thucydides.core.annotations.Step;
+
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
-public class UserFactory extends com.qantium.uisteps.thucydides.user.UserFactory {
+public class UserFactory extends com.qantium.uisteps.core.user.UserFactory {
 
     public UserFactory() {
         super(User.class);
@@ -29,6 +31,12 @@ public class UserFactory extends com.qantium.uisteps.thucydides.user.UserFactory
 
     public UserFactory(Class<? extends User> user) {
         super(user);
+    }
+
+    @Step
+    @Override
+    public User by(String user) {
+        return super.by(user);
     }
 
     @Override

@@ -17,7 +17,6 @@ package com.qantium.uisteps.serenity.run;
 
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.user.User;
-import com.qantium.uisteps.thucydides.run.Listener;
 
 /**
  *
@@ -35,4 +34,5 @@ public class UserStory extends Story {
         super(listener);
         this.user = new SerenityUtils().getNewStepLibrary(User.class);
     }
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2015 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,19 +19,21 @@ import com.qantium.uisteps.serenity.SerenityUtils;
 
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
 public class BrowserFactory implements com.qantium.uisteps.core.browser.BrowserFactory {
 
+    
+    
     @Override
-    public com.qantium.uisteps.thucydides.browser.Browser getBrowser(String withDriver) {
+    public Browser getBrowser(String withDriver) {
         SerenityUtils serenityUtils = new SerenityUtils();
         serenityUtils.getNewDriver(withDriver);
         return serenityUtils.getNewStepLibrary(Browser.class);
     }
 
     @Override
-    public com.qantium.uisteps.thucydides.browser.Browser getBrowser() {
+    public Browser getBrowser() {
         SerenityUtils serenityUtils = new SerenityUtils();
         serenityUtils.getNewDriver();
         return serenityUtils.getNewStepLibrary(Browser.class);

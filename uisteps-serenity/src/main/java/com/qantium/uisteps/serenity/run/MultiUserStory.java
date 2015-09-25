@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2015 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,11 @@ package com.qantium.uisteps.serenity.run;
 
 import com.qantium.uisteps.core.user.User;
 import com.qantium.uisteps.serenity.SerenityUtils;
-import com.qantium.uisteps.thucydides.run.Listener;
 import com.qantium.uisteps.serenity.user.UserFactory;
 
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
 public class MultiUserStory extends Story {
 
