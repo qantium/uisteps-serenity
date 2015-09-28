@@ -99,10 +99,11 @@ public class SerenityUtils {
         Configuration configuration = getConfiguration();
 
         Class<? extends WebDriver> webDriverType = new WebDriverFactory().getClassFor(supportedDriver);
-        WebDriver driver = WebdriverProxyFactory.getFactory().proxyFor(webDriverType, webDriverFactory, configuration);
+        //WebDriver driver = WebdriverProxyFactory.getFactory().proxyFor(webDriverType, webDriverFactory, configuration);
+        WebDriver driver = WebdriverProxyFactory.getFactory().proxyFor(webDriverType);
 
-        EnvironmentVariables environmentVariables = configuration.getEnvironmentVariables();
-        WebDriverFacade webDriverFacade = new ProxyWebDriverFacade(driverName, driver, webDriverFactory, environmentVariables);
+       // EnvironmentVariables environmentVariables = configuration.getEnvironmentVariables();
+        WebDriverFacade webDriverFacade = new ProxyWebDriverFacade(driverName, webDriverType, webDriverFactory);
 
         WebdriverInstances drivers = getDrivers();
 
