@@ -32,9 +32,6 @@
         </repository>
     </repositories>
     
-    
-
-    
     <distributionManagement>
         <repository>
             <id>internal.repo</id>
@@ -52,9 +49,9 @@
     </licenses>
     
     <scm>
-        <url>https://github.com/qantium/uisteps-thucydides/</url>
+        <url>https://github.com/qantium/uisteps-serenity/</url>
         <connection>scm:git:git@github.com:qantium/uisteps-thucydides.git</connection>
-        <developerConnection>scm:git:git@github.com:qantium/uisteps-thucydides.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:qantium/uisteps-serenity.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -66,6 +63,7 @@
             <timezone>UTC+4</timezone>
         </developer>
     </developers>
+    
     <dependencies>
         <dependency>
             <groupId>net.serenity-bdd</groupId>     
