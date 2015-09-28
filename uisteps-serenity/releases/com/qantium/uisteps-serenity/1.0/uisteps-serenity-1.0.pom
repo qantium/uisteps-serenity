@@ -4,8 +4,14 @@
     <groupId>com.qantium</groupId>
     <artifactId>uisteps-serenity</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
-
+    <packaging>pom</packaging>
+    
+    <parent>
+        <groupId>com.qantium</groupId>
+        <artifactId>uisteps-core</artifactId>
+        <version>1.0</version>
+    </parent>
+    
     <url>https://github.com/qantium/uisteps-serenity</url>
     
     <properties>
@@ -25,6 +31,9 @@
             <url>https://github.com/qantium/uisteps-core/tree/master/uisteps-core/releases/</url>
         </repository>
     </repositories>
+    
+    
+
     
     <distributionManagement>
         <repository>
@@ -68,7 +77,7 @@
             <artifactId>serenity-junit</artifactId>
             <version>${serenity.version}</version>
         </dependency>
- <!--       <dependency>
+        <!--       <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.6.1</version>
@@ -90,18 +99,12 @@
             <artifactId>serenity-jbehave</artifactId>
             <version>1.1.0</version>
         </dependency>
-   <!--     <dependency>
+        <!--     <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>jbehave-junit-runner</artifactId>
             <version>1.1.1</version>
             <type>jar</type>
         </dependency>  -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>uisteps-core</artifactId>
-            <version>1.0</version>
-            <type>jar</type>
-        </dependency>
     </dependencies>
     
     <build>
