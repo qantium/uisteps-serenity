@@ -28,18 +28,14 @@ public class ProxyWebDriverFacade extends WebDriverFacade {
 
     private final String name;
 
-    public ProxyWebDriverFacade(String name, final Class<? extends WebDriver> driver, WebDriverFactory webDriverFactory) {
-        super(driver, webDriverFactory);
+    public ProxyWebDriverFacade(String name, WebDriver driver, WebDriverFactory webDriverFactory, EnvironmentVariables environmentVariables) {
+        super(driver, webDriverFactory, environmentVariables);
         this.name = name;
     }
     
+    @Override
     public String getDriverName() {
         return name;
-    }
-
-    @Override
-    public WebDriver getDriverInstance() {
-        return super.getDriverInstance();
     }
 
 }
