@@ -5,16 +5,18 @@ UISteps-serenity designed for easy start and more comfortable using of test fram
 Create maven projet from serenity-junit-archetype or serenity-jbehave-archetype.<br>
 Then add to project pom.xml 
 to the end of section repositories: 
-<code data-lang="xml">
+<pre>
+<plaintext>
 	<repository>
-        <snapshots>
-        	<enabled>false</enabled>
-        </snapshots>
-        <id>central</id>
-        <name>bintray</name>
-        <url>http://jcenter.bintray.com</url>
-     </repository>
-</code>
+	  	<snapshots>
+	        <enabled>false</enabled>
+	    </snapshots>
+	    <id>central</id>
+	    <name>bintray</name>
+	    <url>http://jcenter.bintray.com</url>
+	</repository>
+</plaintext>
+</pre>
 and to the end of section depencies:
 <code data-lang="xml">
 	<dependency>
