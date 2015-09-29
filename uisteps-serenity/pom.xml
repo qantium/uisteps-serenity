@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.qantium</groupId>
     <artifactId>uisteps-serenity</artifactId>
-    <version>1.1</version>
+    <version>1.3</version>
     <packaging>jar</packaging>
     
     <url>https://github.com/qantium/uisteps-serenity</url>
@@ -23,15 +23,7 @@
             <id>central</id>
             <name>bintray</name>
             <url>http://jcenter.bintray.com</url>
-        </repository>       
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-qantium-maven</id>
-            <name>bintray</name>
-            <url>http://dl.bintray.com/qantium/maven</url>
-        </repository>
+        </repository>    
     </repositories>
     
     <distributionManagement>
@@ -70,7 +62,7 @@
         <dependency>
             <groupId>com.qantium</groupId>
             <artifactId>uisteps-core</artifactId>
-            <version>1.2</version>
+            <version>1.3</version>
         </dependency>
         
         <dependency>
