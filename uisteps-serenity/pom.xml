@@ -70,7 +70,7 @@
         <dependency>
             <groupId>com.qantium</groupId>
             <artifactId>uisteps-core</artifactId>
-            <version>1.0</version>
+            <version>1.2</version>
         </dependency>
         
         <dependency>
@@ -95,8 +95,8 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
                 <version>3.3</version>
             </plugin>
