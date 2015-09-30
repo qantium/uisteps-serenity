@@ -39,8 +39,7 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     private final String name;
     
     public Browser() {
-        super(new SerenityUtils().getCurrentDriver(),  new UIObjectFactory(), new UIObjectInitializer(new SerenityUtils().getCurrentDriver()));
-        name = ((ProxyWebDriverFacade) new SerenityUtils().getCurrentDriver()).getDriverName();
+        this(new SerenityUtils().getCurrentDriver(),  new UIObjectFactory(), new UIObjectInitializer(new SerenityUtils().getCurrentDriver()));
     }
 
     public Browser(WebDriver driver, com.qantium.uisteps.core.browser.pages.UIObjectFactory uiObjectFactory, UIObjectInitializer initializer) {
