@@ -23,8 +23,6 @@ import com.qantium.uisteps.serenity.SerenityUtils;
  */
 public class BrowserFactory implements com.qantium.uisteps.core.browser.BrowserFactory {
 
-    
-    
     @Override
     public Browser getBrowser(String withDriver) {
         SerenityUtils serenityUtils = new SerenityUtils();
