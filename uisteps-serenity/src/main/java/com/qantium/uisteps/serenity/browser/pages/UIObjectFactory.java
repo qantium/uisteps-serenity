@@ -19,11 +19,14 @@ import com.qantium.uisteps.core.browser.pages.UIBlock;
 import com.qantium.uisteps.core.browser.pages.UIElement;
 import com.qantium.uisteps.core.browser.pages.UIObject;
 import com.qantium.uisteps.serenity.SerenityUtils;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.lang.reflect.ConstructorUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsElement;
-
+import org.openqa.selenium.support.FindBy;
 /**
  *
  * @author ASolyankin
@@ -34,27 +37,27 @@ public class UIObjectFactory implements com.qantium.uisteps.core.browser.pages.U
     public <T extends UIObject> T instatiate(Class<T> uiObject) {
         return new SerenityUtils().getNewStepLibrary(uiObject);
     }
-
+    
     @Override
-    public <T extends WrapsElement> T instatiate(Class<T> uiObject, WebElement wrappedElement) {
-
-        if (UIBlock.class.isAssignableFrom(uiObject)) {
-
+    public <T extends WrapsElement> T instatiate(Class<T> uiObject, WebElement wrappedElement)  {
+        
+        if(UIBlock.class.isAssignableFrom(uiObject)) {
+            
             T uiObjectInstance = new SerenityUtils().getNewStepLibrary(uiObject);
             ((UIBlock) uiObjectInstance).setWrappedElement(wrappedElement);
             return uiObjectInstance;
-
-        }
-
-        if (UIElement.class.isAssignableFrom(uiObject)) {
-
+            
+        } 
+        
+        if(UIElement.class.isAssignableFrom(uiObject)) {
+            
             try {
                 return (T) ConstructorUtils.invokeConstructor(uiObject, wrappedElement);
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException ex) {
                 throw new RuntimeException("Cannot instantiate " + uiObject + " with parameter " + wrappedElement + ".\nCause: " + ex);
             }
         }
-
+        
         throw new RuntimeException("Cannot instantiate! " + uiObject + " is not assignable from UIBlock or UIElement!");
     }
 }
