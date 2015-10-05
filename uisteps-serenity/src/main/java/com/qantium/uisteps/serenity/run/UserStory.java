@@ -15,24 +15,20 @@
  */
 package com.qantium.uisteps.serenity.run;
 
-import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.user.User;
 
 /**
  *
  * @author A.Solyankin
  */
-public class UserStory extends Story {
-
-    public final User user;
+public class UserStory extends BaseUserStory {
 
     public UserStory() {
-        this(new Listener());
+        super(new Listener(), User.class);
     }
 
     public UserStory(Listener listener) {
-        super(listener);
-        this.user = new SerenityUtils().getNewStepLibrary(User.class);
+        super(listener, User.class);
     }
 
 }
