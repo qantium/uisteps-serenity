@@ -17,6 +17,6 @@ public class UIBlock extends com.qantium.uisteps.core.browser.pages.UIBlock {
 
     @Override
     public Browser inOpenedBrowser() {
-        return new SerenityUtils().getCurrentBrowser();
+        return SerenityUtils.getCurrentBrowser();
     }
 }

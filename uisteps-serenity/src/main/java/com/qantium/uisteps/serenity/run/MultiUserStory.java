@@ -32,7 +32,7 @@ public class MultiUserStory extends Story {
     }
 
     public MultiUserStory(Listener listener) {
-        this.users = new SerenityUtils().getNewStepLibrary(UserFactory.class);
+        this.users = SerenityUtils.getNewStepLibrary(UserFactory.class);
     }
 
     public User by(String user) {

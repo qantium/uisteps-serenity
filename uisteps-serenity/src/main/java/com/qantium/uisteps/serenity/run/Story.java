@@ -35,9 +35,8 @@ public class Story extends SerenityStory {
     }
 
     public Story(Listener listener) {
-        SerenityUtils serenityUtils = new SerenityUtils();
-        this.verify = serenityUtils.getNewStepLibrary(Verify.class);
-        this.storage = serenityUtils.getNewStepLibrary(Storage.class);
+        this.verify = SerenityUtils.getNewStepLibrary(Verify.class);
+        this.storage = SerenityUtils.getNewStepLibrary(Storage.class);
         listener.register();
     }
 

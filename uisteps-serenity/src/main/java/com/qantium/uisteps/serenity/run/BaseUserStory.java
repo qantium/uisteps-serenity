@@ -33,6 +33,6 @@ public class BaseUserStory <U extends User> extends Story {
 
     public BaseUserStory(Listener listener, Class<U> user) {
         super(listener);
-        this.user = new SerenityUtils().getNewStepLibrary(user);
+        this.user = SerenityUtils.getNewStepLibrary(user);
     }
 }

@@ -31,6 +31,6 @@ public class CheckBox extends com.qantium.uisteps.core.browser.pages.elements.Ch
 
     @Override
     public Browser inOpenedBrowser() {
-        return new SerenityUtils().getCurrentBrowser();
+        return SerenityUtils.getCurrentBrowser();
     }
 }

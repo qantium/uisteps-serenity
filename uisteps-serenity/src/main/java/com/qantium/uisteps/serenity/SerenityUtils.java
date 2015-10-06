@@ -19,8 +19,10 @@ import com.qantium.uisteps.core.browser.Browser;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.UUID;
+import org.junit.Assert;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.SessionMap;
+import net.thucydides.core.annotations.Step;
 import net.thucydides.core.guice.Injectors;
 import net.thucydides.core.steps.StepEventBus;
 import net.thucydides.core.steps.StepFactory;
@@ -44,55 +46,55 @@ public class SerenityUtils {
 
     public final static String BROWSER_SESSION_KEY = "#BROWSER#";
 
-    public void putToSession(Browser browser) {
+    public static void putToSession(Browser browser) {
         putToSession(BROWSER_SESSION_KEY, browser);
     }
 
-    public Browser getCurrentBrowser() {
+    public static Browser getCurrentBrowser() {
         return (Browser) getFromSession(BROWSER_SESSION_KEY);
     }
 
-    public WebDriver getCurrentDriver() {
+    public static WebDriver getCurrentDriver() {
         return getDrivers().getCurrentDriver();
     }
 
-    public <T> T getNewStepLibrary(Class<T> stepLibraryClass) {
+    public static <T> T getNewStepLibrary(Class<T> stepLibraryClass) {
         return getStepFactory().instantiateNewStepLibraryFor(stepLibraryClass);
     }
 
-    public StepFactory getStepFactory() {
+    public static StepFactory getStepFactory() {
         return new StepFactory();
     }
 
-    public String getBaseUrl() {
+    public static String getBaseUrl() {
         return getConfiguration().getBaseUrl();
     }
 
-    public void putToSession(String key, Object value) {
+    public static void putToSession(String key, Object value) {
         getCurrentSession().put(key, value);
     }
 
-    public Object getFromSession(String key) {
+    public static Object getFromSession(String key) {
         return getCurrentSession().get(key);
     }
 
-    public SessionMap<Object, Object> getCurrentSession() {
+    public static SessionMap<Object, Object> getCurrentSession() {
         return Serenity.getCurrentSession();
     }
 
-    public void registerListener(StepListener stepsListener) {
+    public static void registerListener(StepListener stepsListener) {
         StepEventBus.getEventBus().registerListener(stepsListener);
     }
 
-    public Configuration getConfiguration() {
+    public static Configuration getConfiguration() {
         return Injectors.getInjector().getInstance(Configuration.class);
     }
 
-    public WebDriver getNewDriver() {
+    public static WebDriver getNewDriver() {
         return getNewDriver(getConfiguration().getDriverType());
     }
 
-    public WebDriver getNewDriver(SupportedWebDriver supportedDriver) {
+    public static WebDriver getNewDriver(SupportedWebDriver supportedDriver) {
         String driverName = "" + UUID.randomUUID();
 
         WebDriverFactory webDriverFactory = new WebDriverFactory();
@@ -101,7 +103,7 @@ public class SerenityUtils {
         Class<? extends WebDriver> webDriverType = new WebDriverFactory().getClassFor(supportedDriver);
         WebDriver driver = WebdriverProxyFactory.getFactory().proxyFor(webDriverType, webDriverFactory, configuration);
         EnvironmentVariables environmentVariables = configuration.getEnvironmentVariables();
-        
+
         WebDriverFacade webDriverFacade = new ProxyWebDriverFacade(driverName, driver, webDriverFactory, environmentVariables);
 
         WebdriverInstances drivers = getDrivers();
@@ -111,15 +113,15 @@ public class SerenityUtils {
         return driver;
     }
 
-    public void useDriver(String driverName) {
+    public static void useDriver(String driverName) {
         getDrivers().useDriver(driverName);
     }
 
-    public WebDriver getNewDriver(String driverType) {
+    public static WebDriver getNewDriver(String driverType) {
         return getNewDriver(SupportedWebDriver.valueOf(driverType.toUpperCase()));
     }
 
-    public WebdriverInstances getDrivers() {
+    public static WebdriverInstances getDrivers() {
         String methodName = "inThisTestThread";
 
         try {
@@ -132,7 +134,7 @@ public class SerenityUtils {
         }
     }
 
-    public WebdriverManager getWebdriverManager() {
+    public static WebdriverManager getWebdriverManager() {
         WebdriverManager webdriverManager = null;
         String methodName = "getWebdriverManager";
 
@@ -148,5 +150,17 @@ public class SerenityUtils {
             webdriverManager = Injectors.getInjector().getInstance(ThucydidesWebdriverManager.class);
         }
         return webdriverManager;
+    }
+
+    public static void showError(String message) {
+        getNewStepLibrary(Error.class).show(message);
+    }
+
+    public static class Error {
+
+        @Step("ERROR: {0}")
+        public void show(String message) {
+            Assert.assertTrue(false);
+        }
     }
 }

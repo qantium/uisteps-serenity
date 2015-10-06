@@ -16,6 +16,6 @@ public class TextBlock extends com.qantium.uisteps.core.browser.pages.elements.T
 
     @Override
     public Browser inOpenedBrowser() {
-        return new SerenityUtils().getCurrentBrowser();
+        return SerenityUtils.getCurrentBrowser();
     }
 }

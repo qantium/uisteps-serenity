@@ -41,7 +41,7 @@ public class UserFactory extends com.qantium.uisteps.core.user.UserFactory {
 
     @Override
     public <T extends User> T getInstanceOf(Class<T> user) {
-        return new SerenityUtils().getNewStepLibrary(user);
+        return SerenityUtils.getNewStepLibrary(user);
     }
 
 }

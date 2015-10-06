@@ -45,7 +45,7 @@ public class UrlFactory extends com.qantium.uisteps.core.browser.pages.UrlFactor
 
     @Override
     protected String getBaseUrl() {
-        return new SerenityUtils().getBaseUrl();
+        return SerenityUtils.getBaseUrl();
     }
 
     @Override

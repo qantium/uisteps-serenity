@@ -35,7 +35,7 @@ public class UIObjectFactory implements com.qantium.uisteps.core.browser.pages.U
 
     @Override
     public <T extends UIObject> T instatiate(Class<T> uiObject) {
-        return new SerenityUtils().getNewStepLibrary(uiObject);
+        return SerenityUtils.getNewStepLibrary(uiObject);
     }
     
     @Override
@@ -43,7 +43,7 @@ public class UIObjectFactory implements com.qantium.uisteps.core.browser.pages.U
         
         if(UIBlock.class.isAssignableFrom(uiObject)) {
             
-            T uiObjectInstance = new SerenityUtils().getNewStepLibrary(uiObject);
+            T uiObjectInstance = SerenityUtils.getNewStepLibrary(uiObject);
             ((UIBlock) uiObjectInstance).setWrappedElement(wrappedElement);
             return uiObjectInstance;
             

@@ -130,12 +130,12 @@ public class Listener implements StepListener {
     }
 
     protected void closeAllBrowser() {
-        WebdriverInstances drivers = new SerenityUtils().getDrivers();
+        WebdriverInstances drivers = SerenityUtils.getDrivers();
         drivers.closeAllDrivers();
     }
 
     public void register() {
-        new SerenityUtils().registerListener(this);
+        SerenityUtils.registerListener(this);
     }
 
     

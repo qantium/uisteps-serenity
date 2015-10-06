@@ -33,6 +33,6 @@ public class BaseUserTest<U extends User> extends JUnitTest {
 
     public BaseUserTest(Listener listener, Class<U> user) {
         super(listener);
-        this.user = new SerenityUtils().getNewStepLibrary(user);
+        this.user = SerenityUtils.getNewStepLibrary(user);
     }
 }

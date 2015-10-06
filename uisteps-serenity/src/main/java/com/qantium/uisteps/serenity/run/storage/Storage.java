@@ -24,7 +24,7 @@ import com.qantium.uisteps.serenity.SerenityUtils;
 public class Storage extends com.qantium.uisteps.core.run.storage.Storage {
 
     public Storage() {
-        super(new SerenityUtils().getCurrentSession());
+        super(SerenityUtils.getCurrentSession());
     }
 
 }

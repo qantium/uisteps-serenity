@@ -16,6 +16,6 @@ public class Button extends com.qantium.uisteps.core.browser.pages.elements.Butt
 
     @Override
     public Browser inOpenedBrowser() {
-        return new SerenityUtils().getCurrentBrowser();
+        return SerenityUtils.getCurrentBrowser();
     }
 }

@@ -16,7 +16,7 @@ public class Link extends com.qantium.uisteps.core.browser.pages.elements.Link {
 
     @Override
     public Browser inOpenedBrowser() {
-        return new SerenityUtils().getCurrentBrowser();
+        return SerenityUtils.getCurrentBrowser();
     }
 
 }

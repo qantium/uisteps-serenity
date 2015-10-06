@@ -32,7 +32,7 @@ public class User extends com.qantium.uisteps.core.user.User {
     }
 
     protected Browser use(Browser browser) {
-        new SerenityUtils().useDriver(((com.qantium.uisteps.serenity.browser.Browser) browser).getName());
+        SerenityUtils.useDriver(((com.qantium.uisteps.serenity.browser.Browser) browser).getName());
         return browser;
     }
 
