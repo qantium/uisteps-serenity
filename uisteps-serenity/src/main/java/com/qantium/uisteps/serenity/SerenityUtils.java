@@ -45,16 +45,13 @@ import org.openqa.selenium.WebDriver;
 public class SerenityUtils {
 
     private final static ThreadLocal<Browser> browserThreadLocal = new ThreadLocal();
-    public final static String BROWSER_SESSION_KEY = "#BROWSER#";
 
     public static void putToSession(Browser browser) {
         browserThreadLocal.set(browser);
-        //putToSession(BROWSER_SESSION_KEY, browser);
     }
 
     public static Browser getCurrentBrowser() {
         return browserThreadLocal.get();
-    //    return (Browser) getFromSession(BROWSER_SESSION_KEY);
     }
 
     public static WebDriver getCurrentDriver() {
