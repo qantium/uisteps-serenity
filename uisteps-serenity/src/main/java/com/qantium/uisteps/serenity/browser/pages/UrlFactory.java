@@ -29,18 +29,8 @@ public class UrlFactory extends com.qantium.uisteps.core.browser.pages.UrlFactor
         super(DefaultUrl.class);
     }
 
-    public UrlFactory(String host, Class<? extends Annotation> urlAnnotation) {
-        super(host, urlAnnotation);
-    }
-
-    @Override
-    protected Class<?> getPageClass(Class<?> clazz) {
-
-        if (clazz.getName().contains("$$")) {
-            return getPageClass(clazz.getSuperclass());
-        } else {
-            return clazz;
-        }
+    public UrlFactory(String HOST, String PARAM, Class<? extends Annotation> urlAnnotation) {
+        super(HOST, PARAM, urlAnnotation);
     }
 
     @Override

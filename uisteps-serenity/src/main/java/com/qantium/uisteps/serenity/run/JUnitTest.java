@@ -19,6 +19,7 @@ import com.qantium.uisteps.core.name.Named;
 import com.qantium.uisteps.serenity.run.storage.Storage;
 import com.qantium.uisteps.serenity.run.verify.Verify;
 import com.qantium.uisteps.serenity.SerenityUtils;
+import com.qantium.uisteps.serenity.run.verify.Assume;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import org.junit.runner.RunWith;
 
@@ -30,6 +31,7 @@ import org.junit.runner.RunWith;
 public class JUnitTest {
 
     public final Verify verify;
+    public final Assume assume;
     public final Storage storage;
 
     public JUnitTest() {
@@ -38,6 +40,7 @@ public class JUnitTest {
 
     public JUnitTest(Listener listener) {
         this.verify = SerenityUtils.getNewStepLibrary(Verify.class);
+        this.assume = SerenityUtils.getNewStepLibrary(Assume.class);
         this.storage = SerenityUtils.getNewStepLibrary(Storage.class);
         listener.register();
     }
