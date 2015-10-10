@@ -3,12 +3,20 @@ package com.qantium.uisteps.serenity.browser.pages;
 import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.name.NameConvertor;
+import org.openqa.selenium.By;
 
 /**
  *
  * @author ASolyankin
  */
 public class UIBlock extends com.qantium.uisteps.core.browser.pages.UIBlock {
+
+    public UIBlock() {
+    }
+
+    public UIBlock(By locator) {
+        super(locator);
+    }
 
     @Override
     public String toString() {
