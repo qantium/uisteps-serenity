@@ -16,7 +16,6 @@
  */
 package com.qantium.uisteps.serenity.browser.pages;
 
-import com.qantium.uisteps.core.name.Name;
 import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.core.browser.pages.Url;
 import com.qantium.uisteps.serenity.SerenityUtils;
@@ -32,7 +31,7 @@ public class Page extends com.qantium.uisteps.core.browser.pages.Page {
         super(new UrlFactory());
     }
 
-    public Page(com.qantium.uisteps.core.browser.pages.UrlFactory urlFactory, Name name) {
+    public Page(com.qantium.uisteps.core.browser.pages.UrlFactory urlFactory, String name) {
         super(urlFactory, name);
     }
 
@@ -40,7 +39,7 @@ public class Page extends com.qantium.uisteps.core.browser.pages.Page {
         super(urlFactory);
     }
 
-    public Page(Url url, Name name) {
+    public Page(Url url, String name) {
         super(url, name);
     }
 
@@ -49,12 +48,12 @@ public class Page extends com.qantium.uisteps.core.browser.pages.Page {
     }
 
     @Override
-    public Name getName() {
+    public String getName() {
 
-        Name name = super.getName();
+        String name = super.getName();
 
-        if (name.isDefault()) {
-            name.setValue(NameConvertor.humanize(getClass()));
+        if (name.equals(Page.DEFAULT_NAME)) {
+            setName(NameConvertor.humanize(getClass()));
         }
 
         return name;

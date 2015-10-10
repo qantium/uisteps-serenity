@@ -19,14 +19,10 @@ import com.qantium.uisteps.core.browser.pages.UIBlock;
 import com.qantium.uisteps.core.browser.pages.UIElement;
 import com.qantium.uisteps.core.browser.pages.UIObject;
 import com.qantium.uisteps.serenity.SerenityUtils;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.lang.reflect.ConstructorUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsElement;
-import org.openqa.selenium.support.FindBy;
 /**
  *
  * @author ASolyankin
