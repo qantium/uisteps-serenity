@@ -61,7 +61,7 @@
         <dependency>
             <groupId>com.qantium</groupId>
             <artifactId>uisteps-core</artifactId>
-            <version>1.15</version>
+            <version>1.16</version>
         </dependency>
         
         <dependency>

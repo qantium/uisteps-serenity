@@ -3,6 +3,7 @@ package com.qantium.uisteps.serenity.browser.pages;
 import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.name.NameConvertor;
+import org.codehaus.plexus.util.StringUtils;
 import org.openqa.selenium.By;
 
 /**
@@ -23,7 +24,7 @@ public class UIBlock extends com.qantium.uisteps.core.browser.pages.UIBlock {
 
         String name = super.getName();
 
-        if (name.equals(Page.DEFAULT_NAME)) {
+        if (!StringUtils.isEmpty(name)) {
             setName(NameConvertor.humanize(getClass()));
         }
 
