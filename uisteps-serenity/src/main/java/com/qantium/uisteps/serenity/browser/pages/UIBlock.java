@@ -19,8 +19,21 @@ public class UIBlock extends com.qantium.uisteps.core.browser.pages.UIBlock {
     }
 
     @Override
+    public String getName() {
+
+        String name = super.getName();
+
+        if (name.equals(Page.DEFAULT_NAME)) {
+            setName(NameConvertor.humanize(getClass()));
+        }
+
+        return name;
+    }
+
+    
+    @Override
     public String toString() {
-        return NameConvertor.humanize(getClass());
+        return getName();
     }
 
     @Override
