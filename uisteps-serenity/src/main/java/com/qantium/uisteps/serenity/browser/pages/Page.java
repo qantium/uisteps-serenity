@@ -20,6 +20,7 @@ import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.core.browser.pages.Url;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.name.NameConvertor;
+import org.openqa.selenium.WebElement;
 
 /**
  *
