@@ -1,6 +1,5 @@
 package com.qantium.uisteps.serenity.browser.pages;
 
-import com.qantium.uisteps.core.Named;
 import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import org.openqa.selenium.WebElement;

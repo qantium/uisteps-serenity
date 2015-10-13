@@ -19,8 +19,6 @@ package com.qantium.uisteps.serenity.browser.pages;
 import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.core.browser.pages.Url;
 import com.qantium.uisteps.serenity.SerenityUtils;
-import com.qantium.uisteps.serenity.name.NameConvertor;
-import org.openqa.selenium.WebElement;
 
 /**
  *
@@ -46,18 +44,6 @@ public class Page extends com.qantium.uisteps.core.browser.pages.Page {
 
     public Page(Url url) {
         super(url);
-    }
-
-    @Override
-    public String getName() {
-
-        String name = super.getName();
-
-        if (name.equals(Page.DEFAULT_NAME)) {
-            setName(NameConvertor.humanize(getClass()));
-        }
-
-        return name;
     }
 
     @Override

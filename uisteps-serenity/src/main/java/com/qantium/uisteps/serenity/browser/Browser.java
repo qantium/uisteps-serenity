@@ -35,11 +35,11 @@ import org.openqa.selenium.internal.WrapsElement;
  * @author ASolyankin
  */
 public class Browser extends com.qantium.uisteps.core.browser.Browser {
-    
+
     private final String name;
-    
+
     public Browser() {
-        this(SerenityUtils.getCurrentDriver(),  new UIObjectFactory(), new UIObjectInitializer(SerenityUtils.getCurrentDriver()));
+        this(SerenityUtils.getCurrentDriver(), new UIObjectFactory(), new UIObjectInitializer(SerenityUtils.getCurrentDriver()));
     }
 
     public Browser(WebDriver driver, com.qantium.uisteps.core.browser.pages.UIObjectFactory uiObjectFactory, UIObjectInitializer initializer) {
@@ -53,16 +53,16 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
 
     @Override
     public com.qantium.uisteps.core.browser.Browser open() {
-        return open(this); 
+        return open(this);
     }
-    
+
     @Step
     protected com.qantium.uisteps.core.browser.Browser open(com.qantium.uisteps.core.browser.Browser browser) {
         return super.open();
     }
-    
-    @Step
+
     @Override
+    @Step("Enter into {0} value {1}")
     public void enterInto(WrapsElement input, String text) {
         super.enterInto(input, text);
     }
@@ -73,14 +73,14 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
         super.clear(input);
     }
 
-    @Step
     @Override
+    @Step("Type into {0} value {1}")
     public void typeInto(WrapsElement input, String text) {
         super.typeInto(input, text);
     }
 
-    @Step
     @Override
+    @Step("Click {0} on point ({1};{2})")
     public void clickOnPoint(WrapsElement element, int x, int y) {
         super.clickOnPoint(element, x, y);
     }

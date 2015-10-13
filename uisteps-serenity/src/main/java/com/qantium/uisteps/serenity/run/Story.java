@@ -15,7 +15,7 @@
  */
 package com.qantium.uisteps.serenity.run;
 
-import com.qantium.uisteps.core.Named;
+import com.qantium.uisteps.core.name.Named;
 import com.qantium.uisteps.serenity.run.storage.Storage;
 import com.qantium.uisteps.serenity.run.verify.Verify;
 import com.qantium.uisteps.serenity.SerenityUtils;
