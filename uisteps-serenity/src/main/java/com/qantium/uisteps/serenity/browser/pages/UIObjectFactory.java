@@ -15,45 +15,16 @@
  */
 package com.qantium.uisteps.serenity.browser.pages;
 
-import com.qantium.uisteps.core.browser.pages.UIBlock;
-import com.qantium.uisteps.core.browser.pages.UIElement;
 import com.qantium.uisteps.core.browser.pages.UIObject;
 import com.qantium.uisteps.serenity.SerenityUtils;
-import java.lang.reflect.InvocationTargetException;
-import org.apache.commons.lang.reflect.ConstructorUtils;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.internal.WrapsElement;
 /**
  *
  * @author ASolyankin
  */
-public class UIObjectFactory implements com.qantium.uisteps.core.browser.pages.UIObjectFactory {
+public class UIObjectFactory extends com.qantium.uisteps.core.browser.pages.UIObjectFactory {
 
     @Override
     public <T extends UIObject> T instatiate(Class<T> uiObject) {
         return SerenityUtils.getNewStepLibrary(uiObject);
-    }
-    
-    @Override
-    public <T extends WrapsElement> T instatiate(Class<T> uiObject, WebElement wrappedElement)  {
-        
-        if(UIBlock.class.isAssignableFrom(uiObject)) {
-            
-            T uiObjectInstance = SerenityUtils.getNewStepLibrary(uiObject);
-            ((UIBlock) uiObjectInstance).setWrappedElement(wrappedElement);
-            return uiObjectInstance;
-            
-        } 
-        
-        if(UIElement.class.isAssignableFrom(uiObject)) {
-            
-            try {
-                return (T) ConstructorUtils.invokeConstructor(uiObject, wrappedElement);
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException ex) {
-                throw new RuntimeException("Cannot instantiate " + uiObject + " with parameter " + wrappedElement + ".\nCause: " + ex);
-            }
-        }
-        
-        throw new RuntimeException("Cannot instantiate! " + uiObject + " is not assignable from UIBlock or UIElement!");
     }
 }

@@ -28,9 +28,13 @@ import net.thucydides.core.annotations.Step;
 public class User extends com.qantium.uisteps.core.user.User {
 
     public User() {
-        super(new BrowserFactory());
+        this(new BrowserFactory());
     }
 
+    public User(BrowserFactory browserFactory) {
+        super(browserFactory);
+    }
+    
     protected Browser use(Browser browser) {
         SerenityUtils.useDriver(((com.qantium.uisteps.serenity.browser.Browser) browser).getName());
         return browser;

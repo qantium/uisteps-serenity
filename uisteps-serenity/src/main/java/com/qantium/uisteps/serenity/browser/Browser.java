@@ -15,6 +15,7 @@
  */
 package com.qantium.uisteps.serenity.browser;
 
+import com.qantium.uisteps.core.browser.LocatorFactory;
 import com.qantium.uisteps.core.browser.pages.MockPage;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.core.browser.pages.UIObjectInitializer;
@@ -27,6 +28,7 @@ import com.qantium.uisteps.core.browser.pages.elements.Select.Option;
 import com.qantium.uisteps.core.browser.pages.elements.Select;
 import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
 import net.thucydides.core.annotations.Step;
+import org.apache.maven.shared.utils.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.internal.WrapsElement;
 
@@ -36,18 +38,21 @@ import org.openqa.selenium.internal.WrapsElement;
  */
 public class Browser extends com.qantium.uisteps.core.browser.Browser {
 
-    private final String name;
+    private String name;
 
     public Browser() {
-        this(SerenityUtils.getCurrentDriver(), new UIObjectFactory(), new UIObjectInitializer(SerenityUtils.getCurrentDriver()));
+        super(SerenityUtils.getCurrentDriver(), new UIObjectFactory(), new UIObjectInitializer(SerenityUtils.getCurrentDriver()), new LocatorFactory());
     }
 
-    public Browser(WebDriver driver, com.qantium.uisteps.core.browser.pages.UIObjectFactory uiObjectFactory, UIObjectInitializer initializer) {
-        super(driver, uiObjectFactory, initializer);
-        name = ((ProxyWebDriverFacade) SerenityUtils.getCurrentDriver()).getDriverName();
+    public Browser(WebDriver driver, com.qantium.uisteps.core.browser.pages.UIObjectFactory uiObjectFactory, UIObjectInitializer initializer, LocatorFactory locatorFactory) {
+        super(driver, uiObjectFactory, initializer, locatorFactory);
     }
 
     public String getName() {
+
+        if (StringUtils.isEmpty(name)) {
+            name = ((ProxyWebDriverFacade) SerenityUtils.getCurrentDriver()).getDriverName();
+        }
         return name;
     }
 
