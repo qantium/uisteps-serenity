@@ -15,7 +15,6 @@
  */
 package com.qantium.uisteps.serenity;
 
-import com.qantium.uisteps.core.browser.Browser;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.UUID;
@@ -43,16 +42,6 @@ import org.openqa.selenium.WebDriver;
  * @author Asolyankin
  */
 public class SerenityUtils {
-
-    private final static ThreadLocal<Browser> browserThreadLocal = new ThreadLocal();
-
-    public static void putToSession(Browser browser) {
-        browserThreadLocal.set(browser);
-    }
-
-    public static Browser getCurrentBrowser() {
-        return browserThreadLocal.get();
-    }
 
     public static WebDriver getCurrentDriver() {
         return getDrivers().getCurrentDriver();

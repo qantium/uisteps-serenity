@@ -26,16 +26,12 @@ public class BrowserFactory implements com.qantium.uisteps.core.browser.BrowserF
     @Override
     public Browser getBrowser(String withDriver) {
         SerenityUtils.getNewDriver(withDriver);
-        Browser browser = SerenityUtils.getNewStepLibrary(Browser.class);
-        SerenityUtils.putToSession(browser);
-        return browser;
+        return SerenityUtils.getNewStepLibrary(Browser.class);
     }
 
     @Override
     public Browser getBrowser() {
         SerenityUtils.getNewDriver();
-        Browser browser = SerenityUtils.getNewStepLibrary(Browser.class);
-        SerenityUtils.putToSession(browser);
-        return browser;
+        return SerenityUtils.getNewStepLibrary(Browser.class);
     }
 }
