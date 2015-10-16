@@ -16,6 +16,8 @@
 package com.qantium.uisteps.serenity.browser;
 
 import com.qantium.uisteps.serenity.SerenityUtils;
+import java.util.Arrays;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -26,12 +28,22 @@ public class BrowserFactory implements com.qantium.uisteps.core.browser.BrowserF
     @Override
     public Browser getBrowser(String withDriver) {
         SerenityUtils.getNewDriver(withDriver);
-        return SerenityUtils.getNewStepLibrary(Browser.class);
+        return getBrowserInstance();
     }
 
     @Override
     public Browser getBrowser() {
         SerenityUtils.getNewDriver();
-        return SerenityUtils.getNewStepLibrary(Browser.class);
+        return getBrowserInstance();
+    }
+    
+    protected Browser getBrowserInstance() {
+        String logWithout = System.getProperty("log.without");
+        
+        if(!StringUtils.isEmpty(logWithout) && Arrays.asList(logWithout.split(",")).contains("browser")) {
+            return new Browser();
+        } else {
+            return SerenityUtils.getNewStepLibrary(Browser.class);
+        }
     }
 }

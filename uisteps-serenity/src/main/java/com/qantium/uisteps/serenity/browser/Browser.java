@@ -15,11 +15,8 @@
  */
 package com.qantium.uisteps.serenity.browser;
 
-import com.qantium.uisteps.core.browser.LocatorFactory;
 import com.qantium.uisteps.core.browser.pages.MockPage;
 import com.qantium.uisteps.serenity.SerenityUtils;
-import com.qantium.uisteps.core.browser.pages.UIObjectInitializer;
-import com.qantium.uisteps.serenity.browser.pages.UIObjectFactory;
 import com.qantium.uisteps.core.browser.pages.UIObject;
 import com.qantium.uisteps.core.browser.pages.elements.CheckBox;
 import com.qantium.uisteps.core.browser.pages.elements.FileInput;
@@ -27,6 +24,7 @@ import com.qantium.uisteps.core.browser.pages.elements.RadioButtonGroup.RadioBut
 import com.qantium.uisteps.core.browser.pages.elements.Select.Option;
 import com.qantium.uisteps.core.browser.pages.elements.Select;
 import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
+import java.util.Arrays;
 import net.thucydides.core.annotations.Step;
 import org.apache.maven.shared.utils.StringUtils;
 import org.openqa.selenium.WebDriver;
@@ -41,11 +39,11 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     private String name;
 
     public Browser() {
-        super(SerenityUtils.getCurrentDriver(), new UIObjectFactory(), new UIObjectInitializer(SerenityUtils.getCurrentDriver()), new LocatorFactory());
+        super(SerenityUtils.getCurrentDriver());
     }
 
-    public Browser(WebDriver driver, com.qantium.uisteps.core.browser.pages.UIObjectFactory uiObjectFactory, UIObjectInitializer initializer, LocatorFactory locatorFactory) {
-        super(driver, uiObjectFactory, initializer, locatorFactory);
+    public Browser(WebDriver driver) {
+        super(driver);
     }
 
     public String getName() {
