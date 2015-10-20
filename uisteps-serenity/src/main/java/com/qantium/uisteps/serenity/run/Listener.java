@@ -15,6 +15,7 @@
  */
 package com.qantium.uisteps.serenity.run;
 
+import com.qantium.uisteps.core.browser.BrowserManager;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import java.util.Map;
 import net.thucydides.core.model.DataTable;
@@ -130,8 +131,9 @@ public class Listener implements StepListener {
     }
 
     protected void closeAllBrowser() {
-        WebdriverInstances drivers = SerenityUtils.getDrivers();
-        drivers.closeAllDrivers();
+     //   WebdriverInstances drivers = SerenityUtils.getDrivers();
+    //    drivers.closeAllDrivers();
+        BrowserManager.closeAllBrowsers();
     }
 
     public void register() {
