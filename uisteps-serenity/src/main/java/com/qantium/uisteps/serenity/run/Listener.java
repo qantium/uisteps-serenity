@@ -139,7 +139,12 @@ public class Listener implements StepListener {
     }
 
     
+    @Override
     public void addNewExamplesFrom(DataTable table) {
+    }
+
+    @Override
+    public void testIsManual() {
     }
 
 }
