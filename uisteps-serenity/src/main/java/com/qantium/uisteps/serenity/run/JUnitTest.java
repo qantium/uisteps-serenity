@@ -21,7 +21,9 @@ import com.qantium.uisteps.serenity.run.verify.Verify;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.run.verify.Assume;
 import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Managed;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 
 /**
  *
@@ -29,7 +31,9 @@ import org.junit.runner.RunWith;
  */
 @RunWith(SerenityRunner.class)
 public class JUnitTest {
-
+    
+    @Managed
+    private WebDriver driver;
     public final Verify verify;
     public final Assume assume;
     public final Storage storage;

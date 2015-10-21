@@ -17,6 +17,8 @@ package com.qantium.uisteps.serenity.run;
 
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.user.User;
+import net.thucydides.core.annotations.Managed;
+import org.openqa.selenium.WebDriver;
 
 /**
  *

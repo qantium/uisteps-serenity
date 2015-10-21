@@ -33,6 +33,7 @@ import net.thucydides.core.webdriver.ThucydidesWebdriverManager;
 import net.thucydides.core.webdriver.WebDriverFacade;
 import net.thucydides.core.webdriver.WebDriverFactory;
 import net.thucydides.core.webdriver.WebdriverInstances;
+import net.thucydides.core.webdriver.WebdriverManager;
 import net.thucydides.core.webdriver.WebdriverProxyFactory;
 import org.openqa.selenium.WebDriver;
 
@@ -120,6 +121,24 @@ public class SerenityUtils {
         } catch (InvocationTargetException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException ex) {
             throw new RuntimeException("Cannot invoke method by name " + methodName + " in class " + ThucydidesWebdriverManager.class + "!\nCause: " + ex);
         }
+    }
+
+    public static WebdriverManager getWebdriverManager() {
+        WebdriverManager webdriverManager = null;
+        String methodName = "getWebdriverManager";
+
+        try {
+            Method getWebdriverManagerMethod = Serenity.class.getDeclaredMethod(methodName);
+            getWebdriverManagerMethod.setAccessible(true);
+            webdriverManager = (WebdriverManager) getWebdriverManagerMethod.invoke(null);
+        } catch (InvocationTargetException | IllegalArgumentException | IllegalAccessException | NoSuchMethodException ex) {
+            throw new RuntimeException("Cannot invoke method by name " + methodName + " in class " + Serenity.class + "!\nCause: " + ex);
+        }
+
+        if (webdriverManager == null) {
+            webdriverManager = Injectors.getInjector().getInstance(ThucydidesWebdriverManager.class);
+        }
+        return webdriverManager;
     }
 
     public static void showError(String message) {
