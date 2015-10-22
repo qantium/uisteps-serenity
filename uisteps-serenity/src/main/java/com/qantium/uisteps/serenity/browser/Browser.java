@@ -16,6 +16,8 @@
 package com.qantium.uisteps.serenity.browser;
 
 import com.qantium.uisteps.core.browser.pages.MockPage;
+import com.qantium.uisteps.core.browser.pages.UIBlock;
+import com.qantium.uisteps.core.browser.pages.UIElement;
 import com.qantium.uisteps.core.browser.pages.UIElements;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.core.browser.pages.UIObject;
@@ -28,6 +30,7 @@ import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
 import net.thucydides.core.annotations.Step;
 import org.apache.maven.shared.utils.StringUtils;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsElement;
 
 /**
@@ -198,5 +201,14 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     @Override
     public void setTo(FileInput fileInput, String filePath) {
         fileInput.getWrappedFileInput().setFileToUpload(filePath);
+    }
+    
+    @Override
+    public <T extends UIObject> T instatiate(Class<T> uiObject) {
+        try {
+            return SerenityUtils.getNewStepLibrary(uiObject);
+        } catch (Exception ex) {
+            return super.instatiate(uiObject);
+        }
     }
 }
