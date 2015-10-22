@@ -16,6 +16,7 @@
 package com.qantium.uisteps.serenity.browser;
 
 import com.qantium.uisteps.core.browser.pages.MockPage;
+import com.qantium.uisteps.core.browser.pages.UIElements;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.core.browser.pages.UIObject;
 import com.qantium.uisteps.core.browser.pages.elements.CheckBox;
@@ -24,7 +25,6 @@ import com.qantium.uisteps.core.browser.pages.elements.RadioButtonGroup.RadioBut
 import com.qantium.uisteps.core.browser.pages.elements.Select.Option;
 import com.qantium.uisteps.core.browser.pages.elements.Select;
 import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
-import java.util.Arrays;
 import net.thucydides.core.annotations.Step;
 import org.apache.maven.shared.utils.StringUtils;
 import org.openqa.selenium.WebDriver;
@@ -116,6 +116,12 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     @Override
     public <T extends UIObject> T onDisplayed(T uiObject) {
         return super.onDisplayed(uiObject);
+    }
+
+    @Step
+    @Override
+    public <T extends UIElements> T onDisplayed(T uiElements) {
+        return super.onDisplayed(uiElements);
     }
 
     @Step

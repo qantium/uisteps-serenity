@@ -34,7 +34,7 @@ public class User extends com.qantium.uisteps.core.user.User {
     public User(BrowserFactory browserFactory) {
         super(browserFactory);
     }
-    
+
     protected Browser use(Browser browser) {
         SerenityUtils.useDriver(((com.qantium.uisteps.serenity.browser.Browser) browser).getName());
         return browser;
@@ -68,5 +68,17 @@ public class User extends com.qantium.uisteps.core.user.User {
     @Override
     public Browser switchToNextBrowser() {
         return use(super.switchToNextBrowser());
+    }
+
+    @Step
+    @Override
+    public void closeAllBrowsers() {
+        super.closeAllBrowsers();
+    }
+
+    @Step
+    @Override
+    public void closeCurrentBrowser() {
+        super.closeCurrentBrowser();
     }
 }
