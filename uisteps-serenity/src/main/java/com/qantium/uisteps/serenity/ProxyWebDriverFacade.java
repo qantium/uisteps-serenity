@@ -44,7 +44,4 @@ public class ProxyWebDriverFacade extends WebDriverFacade {
     public WebDriver getProxiedDriver() {
         return driver;
     }
-    
-    
-    
 }
