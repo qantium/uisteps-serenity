@@ -13,36 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run;
+package com.qantium.uisteps.serenity.run.sories;
 
 import com.qantium.uisteps.core.name.Named;
 import com.qantium.uisteps.serenity.run.storage.Storage;
 import com.qantium.uisteps.serenity.run.verify.Verify;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.run.verify.Assume;
-import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Managed;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
+import net.serenitybdd.jbehave.SerenityStory;
 
 /**
  *
  * @author ASolyankin
  */
-@RunWith(SerenityRunner.class)
-public class JUnitTest {
-    
-    @Managed
-    private WebDriver driver;
+public class Story extends SerenityStory {
+
     public final Verify verify;
     public final Assume assume;
     public final Storage storage;
 
-    public JUnitTest() {
-        this(new Listener());
+    public Story() {
+        this(new StoryListener());
     }
 
-    public JUnitTest(Listener listener) {
+    public Story(StoryListener listener) {
         this.verify = SerenityUtils.getNewStepLibrary(Verify.class);
         this.assume = SerenityUtils.getNewStepLibrary(Assume.class);
         this.storage = SerenityUtils.getNewStepLibrary(Storage.class);
@@ -68,4 +62,5 @@ public class JUnitTest {
     public <T> T remembered(Class<T> key) {
         return storage.remembered(key);
     }
+
 }

@@ -13,22 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run;
+package com.qantium.uisteps.serenity.run.tests.parameterised;
 
-import com.qantium.uisteps.serenity.user.User;
+import com.qantium.uisteps.serenity.run.tests.JUnitTest;
+import org.junit.runner.RunWith;
 
 /**
  *
  * @author A.Solyankin
  */
-public class UserStory extends BaseUserStory {
-
-    public UserStory() {
-        super(new Listener(), User.class);
-    }
-
-    public UserStory(Listener listener) {
-        super(listener, User.class);
-    }
-
+@RunWith(JUnitParameterizedRunner.class)
+public class JUnitParameterisedTest extends JUnitTest {
+    
 }

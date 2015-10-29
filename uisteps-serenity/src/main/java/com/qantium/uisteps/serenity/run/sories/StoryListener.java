@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run;
+package com.qantium.uisteps.serenity.run.sories;
 
+import com.qantium.uisteps.core.browser.BrowserManager;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import java.util.Map;
 import net.thucydides.core.model.DataTable;
@@ -23,13 +24,12 @@ import net.thucydides.core.model.TestOutcome;
 import net.thucydides.core.steps.ExecutedStepDescription;
 import net.thucydides.core.steps.StepFailure;
 import net.thucydides.core.steps.StepListener;
-import net.thucydides.core.webdriver.WebdriverInstances;
 
 /**
  *
  * @author A.Solyankin
  */
-public class Listener implements StepListener {
+public class StoryListener implements StepListener {
 
     @Override
     public void testSuiteStarted(Class<?> storyClass) {
@@ -42,7 +42,7 @@ public class Listener implements StepListener {
 
     @Override
     public void testSuiteFinished() {
-        closeAllBrowser();
+        closeAllBrowsers();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Listener implements StepListener {
 
     @Override
     public void testFinished(TestOutcome result) {
-        closeAllBrowser();
+        closeAllBrowsers();
     }
 
     @Override
@@ -93,7 +93,7 @@ public class Listener implements StepListener {
 
     @Override
     public void testFailed(TestOutcome testOutcome, Throwable cause) {
-        closeAllBrowser();
+        closeAllBrowsers();
     }
 
     @Override
@@ -122,16 +122,15 @@ public class Listener implements StepListener {
 
     @Override
     public void exampleFinished() {
-        closeAllBrowser();
+        closeAllBrowsers();
     }
 
     @Override
     public void assumptionViolated(String message) {
     }
 
-    protected void closeAllBrowser() {
-        WebdriverInstances drivers = SerenityUtils.getDrivers();
-        drivers.closeAllDrivers();
+    protected void closeAllBrowsers() {
+        BrowserManager.closeAllBrowsers();
     }
 
     public void register() {

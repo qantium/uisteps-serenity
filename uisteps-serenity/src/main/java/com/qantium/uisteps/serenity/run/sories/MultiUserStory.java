@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run;
+package com.qantium.uisteps.serenity.run.sories;
 
 import com.qantium.uisteps.core.user.User;
 import com.qantium.uisteps.serenity.SerenityUtils;
@@ -28,10 +28,10 @@ public class MultiUserStory extends Story {
     public final UserFactory users;
 
     public MultiUserStory() {
-        this(new Listener());
+        this(new StoryListener());
     }
 
-    public MultiUserStory(Listener listener) {
+    public MultiUserStory(StoryListener listener) {
         this.users = SerenityUtils.getNewStepLibrary(UserFactory.class);
     }
 

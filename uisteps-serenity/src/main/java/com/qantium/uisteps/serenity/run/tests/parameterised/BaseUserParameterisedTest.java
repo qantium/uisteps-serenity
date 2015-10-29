@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 ASolyankin.
+ * Copyright 2015 A.Solyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,20 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run;
+package com.qantium.uisteps.serenity.run.tests.parameterised;
 
-import com.qantium.uisteps.serenity.user.User;
+import com.qantium.uisteps.serenity.run.tests.BaseUserTest;
+import org.junit.runner.RunWith;
+
 /**
  *
- * @author ASolyankin
+ * @author A.Solyankin
  */
-public class UserTest extends BaseUserTest {
+@RunWith(JUnitParameterizedRunner.class)
+public class BaseUserParameterisedTest<U> extends BaseUserTest {
 
-    public UserTest() {
-        super(new Listener(), User.class);
-    }
-
-    public UserTest(Listener listener) {
-        super(listener, User.class);
+    public BaseUserParameterisedTest(Class<U> user) {
+        super(user);
     }
 }

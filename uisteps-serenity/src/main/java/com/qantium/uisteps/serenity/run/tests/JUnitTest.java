@@ -13,34 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run;
+package com.qantium.uisteps.serenity.run.tests;
 
 import com.qantium.uisteps.core.name.Named;
 import com.qantium.uisteps.serenity.run.storage.Storage;
 import com.qantium.uisteps.serenity.run.verify.Verify;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.run.verify.Assume;
-import net.serenitybdd.jbehave.SerenityStory;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.webdriver.WebdriverInstances;
+import org.junit.After;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 
 /**
  *
  * @author ASolyankin
  */
-public class Story extends SerenityStory {
-
+@RunWith(JUnitRunner.class)
+public class JUnitTest {
+    
+    @Managed
+    WebDriver driver;
     public final Verify verify;
     public final Assume assume;
     public final Storage storage;
 
-    public Story() {
-        this(new Listener());
-    }
-
-    public Story(Listener listener) {
+    public JUnitTest() {
         this.verify = SerenityUtils.getNewStepLibrary(Verify.class);
         this.assume = SerenityUtils.getNewStepLibrary(Assume.class);
         this.storage = SerenityUtils.getNewStepLibrary(Storage.class);
-        listener.register();
     }
 
     public <T> T remember(String key, T value) {
@@ -62,5 +64,10 @@ public class Story extends SerenityStory {
     public <T> T remembered(Class<T> key) {
         return storage.remembered(key);
     }
-
+    
+    @After
+    public void afterTest() {
+        WebdriverInstances drivers = SerenityUtils.getDrivers();
+        drivers.closeAllDrivers();
+    }
 }
