@@ -27,10 +27,12 @@ import org.openqa.selenium.WebDriver;
 public class ProxyWebDriverFacade extends WebDriverFacade {
 
     private final String name;
-
+    private final WebDriver driver;
+    
     public ProxyWebDriverFacade(String name, WebDriver driver, WebDriverFactory webDriverFactory, EnvironmentVariables environmentVariables) {
         super(driver, webDriverFactory, environmentVariables);
         this.name = name;
+        this.driver = driver;
     }
     
     @Override
@@ -38,4 +40,11 @@ public class ProxyWebDriverFacade extends WebDriverFacade {
         return name;
     }
 
+    @Override
+    public WebDriver getProxiedDriver() {
+        return driver;
+    }
+    
+    
+    
 }

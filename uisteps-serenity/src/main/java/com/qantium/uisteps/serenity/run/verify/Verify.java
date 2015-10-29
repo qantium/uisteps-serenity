@@ -9,7 +9,7 @@ import net.thucydides.core.annotations.Step;
  */
 public class Verify extends com.qantium.uisteps.core.run.verify.Verify {
 
-    @Step
+    @Step("Verify {0}")
     @Override
     public Result result(Result result) {
         return super.result(result);
