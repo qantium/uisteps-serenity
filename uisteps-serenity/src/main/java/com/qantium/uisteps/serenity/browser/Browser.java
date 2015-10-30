@@ -70,7 +70,7 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     }
 
     @Override
-    @Step("Enter into {0} value {1}")
+    @Step("Enter into \"{0}\" value \"{1}\"")
     public void enterInto(WrapsElement input, String text) {
         super.enterInto(input, text);
     }
@@ -82,18 +82,18 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     }
 
     @Override
-    @Step("Type into {0} value {1}")
+    @Step("Type into \"{0}\" value \"{1}\"")
     public void typeInto(WrapsElement input, String text) {
         super.typeInto(input, text);
     }
 
     @Override
-    @Step("Click {0} on point ({1};{2})")
+    @Step("Click \"{0}\" on point ({1};{2})")
     public void clickOnPoint(WrapsElement element, int x, int y) {
         super.clickOnPoint(element, x, y);
     }
 
-    @Step
+    @Step("Click \"{0}\"")
     @Override
     public void click(WrapsElement element) {
         super.click(element);
@@ -111,13 +111,13 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
         super.refreshCurrentPage();
     }
 
-    @Step
+    @Step("Open \"{0}\"")
     @Override
     protected void open(MockPage page) {
         super.open(page);
     }
 
-    @Step
+    @Step("On displayed \"{0}\"")
     @Override
     public <T extends UIObject> T onDisplayed(T uiObject) {
         return super.onDisplayed(uiObject);
@@ -154,46 +154,46 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     }
 
     //Select
-    @Step
+    @Step("Select \"{0}\"")
     @Override
     public void select(Option option) {
         super.select(option);
     }
 
-    @Step
+    @Step("Deselect ol values from \"{0}\"")
     @Override
     public void deselectAllValuesFrom(Select select) {
         super.deselectAllValuesFrom(select);
     }
 
-    @Step
+    @Step("Deselect \"{0}\"")
     @Override
     public void deselect(Option option) {
         super.deselect(option);
     }
 
     //Radio button
-    @Step
+    @Step("Select \"{0}\"")
     @Override
     public void select(RadioButton button) {
         super.select(button);
     }
 
     //CheckBox
-    @Step
+    @Step("Select \"{0}\"")
     @Override
     public void select(CheckBox checkBox) {
         checkBox.getWrappedCheckBox().select();
     }
 
-    @Step
+    @Step("Deselect \"{0}\"")
     @Override
     public void deselect(CheckBox checkBox) {
         checkBox.getWrappedCheckBox().deselect();
     }
 
     //FileInput
-    @Step
+    @Step("Set to \"{0}\" file \"{1}\"")
     @Override
     public void setTo(FileInput fileInput, String filePath) {
         fileInput.getWrappedFileInput().setFileToUpload(filePath);
