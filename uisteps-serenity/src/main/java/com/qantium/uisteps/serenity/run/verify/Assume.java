@@ -15,7 +15,7 @@
  */
 package com.qantium.uisteps.serenity.run.verify;
 
-import com.qantium.uisteps.core.run.verify.conditions.Result;
+import com.qantium.uisteps.core.run.verify.results.Result;
 import net.thucydides.core.annotations.Step;
 
 /**
