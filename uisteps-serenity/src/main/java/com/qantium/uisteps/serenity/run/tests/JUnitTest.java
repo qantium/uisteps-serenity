@@ -32,7 +32,9 @@ import org.openqa.selenium.WebDriver;
  */
 @RunWith(JUnitRunner.class)
 public class JUnitTest {
-    
+
+    @Managed
+    WebDriver driver;
     public final Verify verify;
     public final Assume assume;
     public final Storage storage;
@@ -62,7 +64,7 @@ public class JUnitTest {
     public <T> T remembered(Class<T> key) {
         return storage.remembered(key);
     }
-    
+
     @After
     public void afterTest() {
         WebdriverInstances drivers = SerenityUtils.getDrivers();
