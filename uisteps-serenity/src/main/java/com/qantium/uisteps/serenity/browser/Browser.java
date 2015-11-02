@@ -25,6 +25,8 @@ import com.qantium.uisteps.core.browser.pages.elements.RadioButtonGroup.RadioBut
 import com.qantium.uisteps.core.browser.pages.elements.Select.Option;
 import com.qantium.uisteps.core.browser.pages.elements.Select;
 import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.thucydides.core.annotations.Step;
 import org.apache.maven.shared.utils.StringUtils;
 import org.openqa.selenium.WebDriver;
@@ -42,7 +44,7 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     public WebDriver getDriver() {
         return ((ProxyWebDriverFacade) super.getDriver()).getProxiedDriver();
     }
-    
+
     public Browser() {
         super(SerenityUtils.getCurrentDriver());
     }
@@ -201,11 +203,12 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
 
     @Override
     public <T extends UIObject> T instatiate(Class<T> uiObject) {
-        
-        if(UIElement.class.isAssignableFrom(uiObject)) {
-            return super.instatiate(uiObject);
-        } else {
+
+        try {
+            uiObject.getConstructor();
             return SerenityUtils.getNewStepLibrary(uiObject);
+        } catch (NoSuchMethodException ex) {
+            return super.instatiate(uiObject);
         }
     }
 }

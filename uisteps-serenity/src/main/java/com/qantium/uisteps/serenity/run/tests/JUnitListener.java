@@ -26,7 +26,7 @@ import org.junit.runner.notification.RunListener;
  * @author A.Solyankin
  */
 public class JUnitListener extends RunListener {
-   
+    
     @Override
     public void testIgnored(Description description) throws Exception {
         closeAllBrowsers();
@@ -48,7 +48,7 @@ public class JUnitListener extends RunListener {
     }
 
     @Override
-    public void testRunFinished(Result result) throws Exception {
+    public void testRunFinished(Result result) throws Exception { 
         closeAllBrowsers();
     }
     

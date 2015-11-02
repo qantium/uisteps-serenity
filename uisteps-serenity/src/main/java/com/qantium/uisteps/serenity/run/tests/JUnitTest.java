@@ -33,8 +33,6 @@ import org.openqa.selenium.WebDriver;
 @RunWith(JUnitRunner.class)
 public class JUnitTest {
     
-    @Managed
-    WebDriver driver;
     public final Verify verify;
     public final Assume assume;
     public final Storage storage;
