@@ -15,7 +15,7 @@
  */
 package com.qantium.uisteps.serenity.run.tests.parameterised;
 
-import com.qantium.uisteps.serenity.run.tests.JUnitListener;
+import com.qantium.uisteps.core.run.tests.JUnitListener;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.batches.BatchManager;
 import net.thucydides.core.webdriver.Configuration;

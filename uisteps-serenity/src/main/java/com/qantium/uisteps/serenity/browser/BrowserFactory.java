@@ -21,7 +21,7 @@ import com.qantium.uisteps.serenity.SerenityUtils;
  *
  * @author ASolyankin
  */
-public class BrowserFactory implements com.qantium.uisteps.core.browser.BrowserFactory {
+public class BrowserFactory extends com.qantium.uisteps.core.browser.BrowserFactory {
 
     @Override
     public Browser getBrowser(String withDriver) {
@@ -34,7 +34,7 @@ public class BrowserFactory implements com.qantium.uisteps.core.browser.BrowserF
         SerenityUtils.getNewDriver();
         return getBrowserInstance();
     }
-    
+
     protected Browser getBrowserInstance() {
         return SerenityUtils.getNewStepLibrary(Browser.class);
     }

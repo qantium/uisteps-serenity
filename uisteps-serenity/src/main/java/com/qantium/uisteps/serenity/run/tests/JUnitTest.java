@@ -21,8 +21,6 @@ import com.qantium.uisteps.serenity.run.verify.Verify;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.run.verify.Assume;
 import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.webdriver.WebdriverInstances;
-import org.junit.After;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
@@ -31,43 +29,17 @@ import org.openqa.selenium.WebDriver;
  * @author ASolyankin
  */
 @RunWith(JUnitRunner.class)
-public class JUnitTest {
+public class JUnitTest extends com.qantium.uisteps.core.run.tests.JUnitTest {
 
     @Managed
     WebDriver driver;
-    public final Verify verify;
-    public final Assume assume;
-    public final Storage storage;
 
     public JUnitTest() {
-        this.verify = SerenityUtils.getNewStepLibrary(Verify.class);
-        this.assume = SerenityUtils.getNewStepLibrary(Assume.class);
-        this.storage = SerenityUtils.getNewStepLibrary(Storage.class);
-    }
 
-    public <T> T remember(String key, T value) {
-        return storage.remember(key, value);
-    }
-
-    public <T extends Named> T remember(T value) {
-        return storage.remember(value);
-    }
-
-    public <T> T remember(T value) {
-        return storage.remember(value);
-    }
-
-    public <T> T remembered(String key) {
-        return storage.remembered(key);
-    }
-
-    public <T> T remembered(Class<T> key) {
-        return storage.remembered(key);
-    }
-
-    @After
-    public void afterTest() {
-        WebdriverInstances drivers = SerenityUtils.getDrivers();
-        drivers.closeAllDrivers();
+        super(
+                SerenityUtils.getNewStepLibrary(Verify.class),
+                SerenityUtils.getNewStepLibrary(Assume.class),
+                SerenityUtils.getNewStepLibrary(Storage.class)
+        );
     }
 }
