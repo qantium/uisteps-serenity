@@ -24,15 +24,15 @@ import com.qantium.uisteps.serenity.user.UserFactory;
  *
  * @author ASolyankin
  */
-public class MultiUserTest extends JUnitTest {
+public class MultiUserSerenityTest extends JUnitSerenityTest {
 
     public final UserFactory users;
 
-    public MultiUserTest() {
+    public MultiUserSerenityTest() {
         this(new JUnitListener());
     }
 
-    public MultiUserTest(JUnitListener listener) {
+    public MultiUserSerenityTest(JUnitListener listener) {
         this.users = SerenityUtils.getNewStepLibrary(UserFactory.class);
     }
 

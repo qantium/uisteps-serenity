@@ -16,7 +16,6 @@
 package com.qantium.uisteps.serenity.browser;
 
 import com.qantium.uisteps.core.browser.pages.MockPage;
-import com.qantium.uisteps.core.browser.pages.UIElement;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.core.browser.pages.UIObject;
 import com.qantium.uisteps.core.browser.pages.elements.CheckBox;
@@ -25,11 +24,10 @@ import com.qantium.uisteps.core.browser.pages.elements.RadioButtonGroup.RadioBut
 import com.qantium.uisteps.core.browser.pages.elements.Select.Option;
 import com.qantium.uisteps.core.browser.pages.elements.Select;
 import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import net.thucydides.core.annotations.Step;
 import org.apache.maven.shared.utils.StringUtils;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.internal.WrapsElement;
 
 /**
@@ -40,19 +38,6 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
 
     private String name;
 
-    @Override
-    public WebDriver getDriver() {
-        return ((ProxyWebDriverFacade) super.getDriver()).getProxiedDriver();
-    }
-
-    public Browser() {
-        super(SerenityUtils.getCurrentDriver());
-    }
-
-    public Browser(WebDriver driver) {
-        super(driver);
-    }
-
     public String getName() {
 
         if (StringUtils.isEmpty(name)) {
@@ -62,61 +47,36 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     }
 
     @Override
-    public com.qantium.uisteps.core.browser.Browser open() {
+    public Browser open() {
         return open(this);
     }
 
     @Step
-    protected com.qantium.uisteps.core.browser.Browser open(com.qantium.uisteps.core.browser.Browser browser) {
+    protected Browser open(com.qantium.uisteps.core.browser.Browser browser) {
         return super.open();
     }
 
-    @Override
-    @Step("Enter into \"{0}\" value \"{1}\"")
-    public void enterInto(WrapsElement input, String text) {
-        super.enterInto(input, text);
+    @Step
+    protected Browser open(MockPage page) {
+        return super.open(page);
     }
 
     @Step
     @Override
-    public void clear(WrapsElement input) {
-        super.clear(input);
-    }
-
-    @Override
-    @Step("Type into \"{0}\" value \"{1}\"")
-    public void typeInto(WrapsElement input, String text) {
-        super.typeInto(input, text);
-    }
-
-    @Override
-    @Step("Click \"{0}\" on point ({1};{2})")
-    public void clickOnPoint(WrapsElement element, int x, int y) {
-        super.clickOnPoint(element, x, y);
-    }
-
-    @Step("Click \"{0}\"")
-    @Override
-    public void click(WrapsElement element) {
-        super.click(element);
+    public Browser deleteAllCookies() {
+        return super.deleteAllCookies();
     }
 
     @Step
     @Override
-    public void deleteCookies() {
-        super.deleteCookies();
+    public Browser deleteCookieNamed(String name) {
+        return super.deleteCookieNamed(name);
     }
 
     @Step
     @Override
-    public void refreshCurrentPage() {
-        super.refreshCurrentPage();
-    }
-
-    @Step("Open \"{0}\"")
-    @Override
-    protected void open(MockPage page) {
-        super.open(page);
+    public Browser refreshCurrentPage() {
+        return super.refreshCurrentPage();
     }
 
     @Step("On displayed \"{0}\"")
@@ -125,90 +85,247 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
         return super.onDisplayed(uiObject);
     }
 
+    //Window
     @Step
     @Override
-    public void openNewWindow() {
-        super.openNewWindow();
+    public Browser openNewWindow() {
+        return super.openNewWindow();
     }
 
     @Step
     @Override
-    public void switchToWindowByIndex(int index) {
-        super.switchToWindowByIndex(index);
+    public Browser switchToWindowByIndex(int index) {
+        return super.switchToWindowByIndex(index);
     }
 
     @Step
     @Override
-    public void switchToDefaultWindow() {
-        super.switchToDefaultWindow();
+    public Browser switchToDefaultWindow() {
+        return super.switchToDefaultWindow();
     }
 
     @Step
     @Override
-    public void switchToPreviousWindow() {
-        super.switchToPreviousWindow();
+    public Browser switchToPreviousWindow() {
+        return super.switchToPreviousWindow();
     }
 
     @Step
     @Override
-    public void switchToNextWindow() {
-        super.switchToNextWindow();
+    public Browser switchToNextWindow() {
+        return super.switchToNextWindow();
+    }
+
+    //Window position
+
+    @Step("Set window position to point ({0}; {1})")
+    @Override
+    public Browser setWindowPosition(int newX, int newY) {
+        return super.setWindowPosition(newX, newY);
+    }
+
+    @Step("Move window with offset ({0}; {1})")
+    @Override
+    public Browser moveWindowBy(int xOffset, int yOffset) {
+        return super.moveWindowBy(xOffset, yOffset);
+    }
+
+    @Step("Move window to point ({0}; {1})")
+    @Override
+    public Browser moveWindowTo(int newX, int newY) {
+        return super.moveWindowTo(newX, newY);
+    }
+
+    @Step
+    @Override
+    public Browser maximizeWindow() {
+        return super.maximizeWindow();
+    }
+
+    //Window size
+    @Step("Set window size to {0} x {1}")
+    @Override
+    public Browser setWindowSize(int width, int height) {
+        return super.setWindowSize(width, height);
+    }
+
+    @Step("Set window width to {0}")
+    @Override
+    public Browser setWindowWidth(int width) {
+        getDriver().manage().window().setSize(new Dimension(width, getWindowSize().getHeight()));
+        return super.setWindowWidth(width);
+    }
+
+    @Step("Set window height to {0}")
+    @Override
+    public Browser setWindowHeight(int height) {
+        return super.setWindowHeight(height);
+    }
+
+    //Elements
+    @Step
+    @Override
+    public Browser clear(WrapsElement input) {
+        return super.clear(input);
+    }
+
+    @Override
+    @Step("Type into \"{0}\" value \"{1}\"")
+    public Browser typeInto(WrapsElement input, String text) {
+        return super.typeInto(input, text);
+    }
+
+    @Override
+    @Step("Enter into \"{0}\" value \"{1}\"")
+    public Browser enterInto(WrapsElement input, String text) {
+        return super.enterInto(input, text);
+    }
+
+    @Override
+    @Step("Click \"{0}\" on point ({1};{2})")
+    public Browser clickOnPoint(WrapsElement element, int x, int y) {
+        return super.clickOnPoint(element, x, y);
+    }
+
+    @Step("Click \"{0}\"")
+    @Override
+    public Browser click(WrapsElement element) {
+        return super.click(element);
+    }
+
+    @Step
+    @Override
+    public Browser click() {
+        return super.click();
+    }
+
+    @Step
+    @Override
+    public Browser clickAndHold() {
+        return super.clickAndHold();
+    }
+
+    @Override
+    @Step("Click and hold on \"{0}\"")
+    public Browser clickAndHold(WrapsElement element) {
+        return super.clickAndHold(element);
+    }
+
+    @Step
+    @Override
+    public Browser doubleClick() {
+        return super.doubleClick();
+    }
+
+    @Step("Double click on \"{0}\"")
+    @Override
+    public Browser doubleClick(WrapsElement element) {
+        return super.doubleClick(element);
+    }
+
+    @Step("Double and drop \"{0}\" to \"{1}\"")
+    @Override
+    public Browser dragAndDrop(WrapsElement source, WrapsElement target) {
+        return super.dragAndDrop(source, target);
+    }
+
+    @Step("Double and drop \"{0}\" with offset ({1}; {2})")
+    @Override
+    public Browser dragAndDrop(WrapsElement element, int xOffset, int yOffset) {
+        return super.dragAndDrop(element, xOffset, yOffset);
+    }
+
+    @Step("Press the key \"{0}\"")
+    @Override
+    public <T extends com.qantium.uisteps.core.browser.Browser> T keyDown(Keys theKey) {
+        return super.keyDown(theKey);
+    }
+
+    @Step("Click \"{0}\" and press the key \"{1}\"")
+    @Override
+    public Browser keyDown(WrapsElement element, Keys theKey) {
+        return super.keyDown(element, theKey);
+    }
+
+    @Step("Lift the key \"{0}\"")
+    @Override
+    public Browser keyUp(Keys theKey) {
+        return super.keyUp(theKey);
+    }
+
+    @Step("Click \"{0}\" and lift the key \"{1}\"")
+    @Override
+    public Browser keyUp(WrapsElement element, Keys theKey) {
+        return super.keyUp(element, theKey);
+    }
+
+    @Step("Move mouse with offset ({0}; {1})")
+    @Override
+    public <T extends com.qantium.uisteps.core.browser.Browser> T moveMouseByOffset(int xOffset, int yOffset) {
+        return super.moveMouseByOffset(xOffset, yOffset);
+    }
+
+    @Step("Move mouse to \"{0}\" with offset ({1}; {2})")
+    @Override
+    public Browser moveToElement(WrapsElement element, int xOffset, int yOffset) {
+        return super.moveToElement(element, xOffset, yOffset);
+    }
+
+    @Step("Move mouse over \"{0}\"")
+    @Override
+    public Browser moveMouseOver(WrapsElement element) {
+        return super.moveMouseOver(element);
     }
 
     //Select
     @Step("Select \"{0}\"")
     @Override
-    public void select(Option option) {
-        super.select(option);
+    public Browser select(Option option) {
+        return super.select(option);
     }
 
     @Step("Deselect ol values from \"{0}\"")
     @Override
-    public void deselectAllValuesFrom(Select select) {
-        super.deselectAllValuesFrom(select);
+    public Browser deselectAllValuesFrom(Select select) {
+        return super.deselectAllValuesFrom(select);
     }
 
     @Step("Deselect \"{0}\"")
     @Override
-    public void deselect(Option option) {
-        super.deselect(option);
+    public Browser deselect(Option option) {
+        return super.deselect(option);
     }
 
     //Radio button
     @Step("Select \"{0}\"")
     @Override
-    public void select(RadioButton button) {
-        super.select(button);
+    public Browser select(RadioButton button) {
+        return super.select(button);
     }
 
     //CheckBox
     @Step("Select \"{0}\"")
     @Override
-    public void select(CheckBox checkBox) {
-        checkBox.getWrappedCheckBox().select();
+    public Browser select(CheckBox checkBox) {
+        return super.select(checkBox);
     }
 
     @Step("Deselect \"{0}\"")
     @Override
-    public void deselect(CheckBox checkBox) {
-        checkBox.getWrappedCheckBox().deselect();
+    public Browser deselect(CheckBox checkBox) {
+        return super.deselect(checkBox);
     }
 
     //FileInput
     @Step("Set to \"{0}\" file \"{1}\"")
     @Override
-    public void setTo(FileInput fileInput, String filePath) {
-        fileInput.getWrappedFileInput().setFileToUpload(filePath);
+    public Browser setTo(FileInput fileInput, String filePath) {
+        return super.setTo(fileInput, filePath);
     }
 
     @Override
     public <T extends UIObject> T instatiate(Class<T> uiObject) {
+        return SerenityUtils.getNewStepLibrary(uiObject);
 
-        try {
-            uiObject.getConstructor();
-            return SerenityUtils.getNewStepLibrary(uiObject);
-        } catch (NoSuchMethodException ex) {
-            return super.instatiate(uiObject);
-        }
     }
 }

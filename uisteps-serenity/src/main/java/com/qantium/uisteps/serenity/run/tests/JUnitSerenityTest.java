@@ -15,7 +15,7 @@
  */
 package com.qantium.uisteps.serenity.run.tests;
 
-import com.qantium.uisteps.core.name.Named;
+import com.qantium.uisteps.core.run.tests.JUnitTest;
 import com.qantium.uisteps.serenity.run.storage.Storage;
 import com.qantium.uisteps.serenity.run.verify.Verify;
 import com.qantium.uisteps.serenity.SerenityUtils;
@@ -28,13 +28,13 @@ import org.openqa.selenium.WebDriver;
  *
  * @author ASolyankin
  */
-@RunWith(JUnitRunner.class)
-public class JUnitTest extends com.qantium.uisteps.core.run.tests.JUnitTest {
+@RunWith(JUnitSerenityRunner.class)
+public class JUnitSerenityTest extends JUnitTest {
 
     @Managed
     WebDriver driver;
 
-    public JUnitTest() {
+    public JUnitSerenityTest() {
 
         super(
                 SerenityUtils.getNewStepLibrary(Verify.class),

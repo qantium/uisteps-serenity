@@ -48,7 +48,7 @@ public class SerenityUtils {
     }
 
     public static <T> T getNewStepLibrary(Class<T> stepLibraryClass) {
-        return getStepFactory().instantiateNewStepLibraryFor(stepLibraryClass);
+        return getStepFactory().getNewStepLibraryFor(stepLibraryClass);
     }
 
     public static StepFactory getStepFactory() {
@@ -84,21 +84,26 @@ public class SerenityUtils {
     }
 
     public static WebDriver getNewDriver(SupportedWebDriver supportedDriver) {
-        String driverName = "" + UUID.randomUUID();
 
         WebDriverFactory webDriverFactory = new WebDriverFactory();
         Configuration configuration = getConfiguration();
 
-        Class<? extends WebDriver> webDriverType = new WebDriverFactory().getClassFor(supportedDriver);
+        Class<? extends WebDriver> webDriverType = webDriverFactory.getClassFor(supportedDriver);
         WebDriver driver = WebdriverProxyFactory.getFactory().proxyFor(webDriverType, webDriverFactory, configuration);
-        EnvironmentVariables environmentVariables = configuration.getEnvironmentVariables();
+        return useDriver(driver);
+    }
 
-        WebDriverFacade webDriverFacade = new ProxyWebDriverFacade(driverName, driver, webDriverFactory, environmentVariables);
+    public static WebDriver useDriver(WebDriver driver) {
+        String driverName = "" + UUID.randomUUID();
+
+        EnvironmentVariables environmentVariables = getConfiguration().getEnvironmentVariables();
+
+        WebDriverFacade webDriverFacade = new ProxyWebDriverFacade(driverName, driver, new WebDriverFactory(), environmentVariables);
 
         WebdriverInstances drivers = getDrivers();
 
         drivers.registerDriverCalled(driverName).forDriver(webDriverFacade);
-        drivers.useDriver(driverName);
+        useDriver(driverName);
         return driver;
     }
 

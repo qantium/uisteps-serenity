@@ -18,7 +18,6 @@ package com.qantium.uisteps.serenity.user;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.serenity.browser.BrowserFactory;
-import com.qantium.uisteps.core.browser.NoBrowserException;
 import net.thucydides.core.annotations.Step;
 
 /**
@@ -28,11 +27,7 @@ import net.thucydides.core.annotations.Step;
 public class User extends com.qantium.uisteps.core.user.User {
 
     public User() {
-        this(new BrowserFactory());
-    }
-
-    public User(BrowserFactory browserFactory) {
-        super(browserFactory);
+        super(new BrowserFactory());
     }
 
     protected Browser use(Browser browser) {
@@ -48,7 +43,7 @@ public class User extends com.qantium.uisteps.core.user.User {
 
     @Step
     @Override
-    public Browser switchToBrowserByIndex(int index) throws NoBrowserException {
+    public Browser switchToBrowserByIndex(int index) {
         return use(super.switchToBrowserByIndex(index));
     }
 

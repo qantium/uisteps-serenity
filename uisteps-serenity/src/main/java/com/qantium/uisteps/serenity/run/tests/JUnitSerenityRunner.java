@@ -30,37 +30,37 @@ import org.junit.runners.model.InitializationError;
  *
  * @author A.Solyankin
  */
-public class JUnitRunner extends SerenityRunner {
+public class JUnitSerenityRunner extends SerenityRunner {
 
-    public JUnitRunner(Class<?> klass) throws InitializationError {
+    public JUnitSerenityRunner(Class<?> klass) throws InitializationError {
         super(klass);
     }
 
-    public JUnitRunner(Class<?> klass, Module module) throws InitializationError {
+    public JUnitSerenityRunner(Class<?> klass, Module module) throws InitializationError {
         super(klass, module);
     }
 
-    public JUnitRunner(Class<?> klass, Injector injector) throws InitializationError {
+    public JUnitSerenityRunner(Class<?> klass, Injector injector) throws InitializationError {
         super(klass, injector);
     }
 
-    public JUnitRunner(Class<?> klass, WebDriverFactory webDriverFactory) throws InitializationError {
+    public JUnitSerenityRunner(Class<?> klass, WebDriverFactory webDriverFactory) throws InitializationError {
         super(klass, webDriverFactory);
     }
 
-    public JUnitRunner(Class<?> klass, WebDriverFactory webDriverFactory, Configuration configuration) throws InitializationError {
+    public JUnitSerenityRunner(Class<?> klass, WebDriverFactory webDriverFactory, Configuration configuration) throws InitializationError {
         super(klass, webDriverFactory, configuration);
     }
 
-    public JUnitRunner(Class<?> klass, WebDriverFactory webDriverFactory, Configuration configuration, BatchManager batchManager) throws InitializationError {
+    public JUnitSerenityRunner(Class<?> klass, WebDriverFactory webDriverFactory, Configuration configuration, BatchManager batchManager) throws InitializationError {
         super(klass, webDriverFactory, configuration, batchManager);
     }
 
-    public JUnitRunner(Class<?> klass, BatchManager batchManager) throws InitializationError {
+    public JUnitSerenityRunner(Class<?> klass, BatchManager batchManager) throws InitializationError {
         super(klass, batchManager);
     }
 
-    public JUnitRunner(Class<?> klass, WebdriverManager webDriverManager, Configuration configuration, BatchManager batchManager) throws InitializationError {
+    public JUnitSerenityRunner(Class<?> klass, WebdriverManager webDriverManager, Configuration configuration, BatchManager batchManager) throws InitializationError {
         super(klass, webDriverManager, configuration, batchManager);
     }
 

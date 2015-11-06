@@ -23,11 +23,11 @@ import com.qantium.uisteps.serenity.user.User;
  * @author A.Solyankin
  * @param <U>
  */
-public class BaseUserTest<U extends User> extends JUnitTest {
+public class BaseUserSerenityTest<U extends User> extends JUnitSerenityTest {
 
     public final U user;
 
-    public BaseUserTest(Class<U> user) {
+    public BaseUserSerenityTest(Class<U> user) {
         this.user = SerenityUtils.getNewStepLibrary(user);
     }
 }

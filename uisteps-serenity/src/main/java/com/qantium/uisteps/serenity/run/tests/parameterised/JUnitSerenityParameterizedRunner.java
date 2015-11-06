@@ -27,13 +27,13 @@ import org.junit.runner.notification.RunNotifier;
  *
  * @author A.Solyankin
  */
-public class JUnitParameterizedRunner extends SerenityParameterizedRunner {
+public class JUnitSerenityParameterizedRunner extends SerenityParameterizedRunner {
 
-    public JUnitParameterizedRunner(Class<?> klass, Configuration configuration, WebDriverFactory webDriverFactory, BatchManager batchManager) throws Throwable {
+    public JUnitSerenityParameterizedRunner(Class<?> klass, Configuration configuration, WebDriverFactory webDriverFactory, BatchManager batchManager) throws Throwable {
         super(klass, configuration, webDriverFactory, batchManager);
     }
 
-    public JUnitParameterizedRunner(Class<?> klass) throws Throwable {
+    public JUnitSerenityParameterizedRunner(Class<?> klass) throws Throwable {
         super(klass);
     }
 

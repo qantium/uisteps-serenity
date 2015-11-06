@@ -15,14 +15,14 @@
  */
 package com.qantium.uisteps.serenity.run.tests.parameterised;
 
-import com.qantium.uisteps.serenity.run.tests.UserTest;
+import com.qantium.uisteps.serenity.run.tests.UserSerenityTest;
 import org.junit.runner.RunWith;
 
 /**
  *
  * @author A.Solyankin
  */
-@RunWith(JUnitParameterizedRunner.class)
-public class UserParameterisedTest extends UserTest {
+@RunWith(JUnitSerenityParameterizedRunner.class)
+public class UserParameterisedTest extends UserSerenityTest {
     
 }

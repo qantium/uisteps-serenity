@@ -16,6 +16,7 @@
 package com.qantium.uisteps.serenity.browser;
 
 import com.qantium.uisteps.serenity.SerenityUtils;
+import org.openqa.selenium.WebDriver;
 
 /**
  *
@@ -24,18 +25,11 @@ import com.qantium.uisteps.serenity.SerenityUtils;
 public class BrowserFactory extends com.qantium.uisteps.core.browser.BrowserFactory {
 
     @Override
-    public Browser getBrowser(String withDriver) {
-        SerenityUtils.getNewDriver(withDriver);
-        return getBrowserInstance();
-    }
-
-    @Override
-    public Browser getBrowser() {
-        SerenityUtils.getNewDriver();
-        return getBrowserInstance();
-    }
-
-    protected Browser getBrowserInstance() {
-        return SerenityUtils.getNewStepLibrary(Browser.class);
+    public Browser getBrowser(WebDriver withDriver) {
+        setSettingsTo(withDriver);
+        Browser browser = SerenityUtils.getNewStepLibrary(Browser.class);
+        browser.setDriver(withDriver);
+        SerenityUtils.useDriver(withDriver);
+        return browser;
     }
 }
