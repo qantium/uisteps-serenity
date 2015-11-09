@@ -94,8 +94,8 @@ public class SerenityUtils {
     }
 
     public static WebDriver useDriver(WebDriver driver) {
-        String driverName = "" + UUID.randomUUID();
 
+        String driverName = "" + UUID.randomUUID();
         EnvironmentVariables environmentVariables = getConfiguration().getEnvironmentVariables();
 
         WebDriverFacade webDriverFacade = new ProxyWebDriverFacade(driverName, driver, new WebDriverFactory(), environmentVariables);
@@ -104,7 +104,7 @@ public class SerenityUtils {
 
         drivers.registerDriverCalled(driverName).forDriver(webDriverFacade);
         useDriver(driverName);
-        return driver;
+        return webDriverFacade;
     }
 
     public static void useDriver(String driverName) {

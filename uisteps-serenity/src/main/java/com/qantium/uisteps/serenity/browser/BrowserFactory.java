@@ -28,8 +28,7 @@ public class BrowserFactory extends com.qantium.uisteps.core.browser.BrowserFact
     public Browser getBrowser(WebDriver withDriver) {
         setSettingsTo(withDriver);
         Browser browser = SerenityUtils.getNewStepLibrary(Browser.class);
-        browser.setDriver(withDriver);
-        SerenityUtils.useDriver(withDriver);
+        browser.setDriver(SerenityUtils.useDriver(withDriver));
         return browser;
     }
 }

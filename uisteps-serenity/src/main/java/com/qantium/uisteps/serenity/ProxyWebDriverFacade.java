@@ -15,6 +15,7 @@
  */
 package com.qantium.uisteps.serenity;
 
+import com.qantium.uisteps.core.name.NameConvertor;
 import net.thucydides.core.util.EnvironmentVariables;
 import net.thucydides.core.webdriver.WebDriverFacade;
 import net.thucydides.core.webdriver.WebDriverFactory;
@@ -44,4 +45,9 @@ public class ProxyWebDriverFacade extends WebDriverFacade {
     public WebDriver getProxiedDriver() {
         return driver;
     }
+
+    @Override
+    public String toString() {
+        return getDriverName();
+    } 
 }

@@ -15,7 +15,6 @@
  */
 package com.qantium.uisteps.serenity.user;
 
-import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.core.browser.Browser;
 import com.qantium.uisteps.serenity.browser.BrowserFactory;
 import net.thucydides.core.annotations.Step;
@@ -30,39 +29,40 @@ public class User extends com.qantium.uisteps.core.user.User {
         super(new BrowserFactory());
     }
 
-    protected Browser use(Browser browser) {
-        SerenityUtils.useDriver(((com.qantium.uisteps.serenity.browser.Browser) browser).getName());
+    @Step
+    @Override
+    protected Browser open(Browser browser) {
         return browser;
     }
 
     @Step
     @Override
     public Browser switchToLastBrowser() {
-        return use(super.switchToLastBrowser());
+        return open(super.switchToLastBrowser());
     }
 
     @Step
     @Override
     public Browser switchToBrowserByIndex(int index) {
-        return use(super.switchToBrowserByIndex(index));
+        return open(super.switchToBrowserByIndex(index));
     }
 
     @Step
     @Override
     public Browser switchToDefaultBrowser() {
-        return use(super.switchToDefaultBrowser());
+        return open(super.switchToDefaultBrowser());
     }
 
     @Step
     @Override
     public Browser switchToPreviousBrowser() {
-        return use(super.switchToPreviousBrowser());
+        return open(super.switchToPreviousBrowser());
     }
 
     @Step
     @Override
     public Browser switchToNextBrowser() {
-        return use(super.switchToNextBrowser());
+        return open(super.switchToNextBrowser());
     }
 
     @Step
