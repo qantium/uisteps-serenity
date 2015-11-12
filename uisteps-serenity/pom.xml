@@ -3,7 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.qantium</groupId>
     <artifactId>uisteps-serenity</artifactId>
-    <version>2.6</version>
+    <name>${project.artifactId}</name>
+    <version>2.7</version>
     <packaging>jar</packaging>
     
     <url>https://github.com/qantium/uisteps-serenity</url>
