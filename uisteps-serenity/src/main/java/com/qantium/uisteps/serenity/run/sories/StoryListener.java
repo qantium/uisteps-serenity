@@ -130,7 +130,7 @@ public class StoryListener implements StepListener {
     }
 
     protected void closeAllBrowsers() {
-        BrowserManager.closeAllBrowsers();
+        BrowserManager.reset();
     }
 
     public void register() {
