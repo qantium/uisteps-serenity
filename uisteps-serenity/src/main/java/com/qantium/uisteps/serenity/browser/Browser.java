@@ -42,8 +42,8 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     }
 
     @Step("Open \"{0}\"")
-    protected void open(Page page) {
-        super.open(page);
+    public <T extends Page> T open(T page, String... params) {
+        return super.open(page, params);
     }
 
     @Step

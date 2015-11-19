@@ -15,7 +15,6 @@
  */
 package com.qantium.uisteps.serenity;
 
-import com.qantium.uisteps.core.name.NameConvertor;
 import net.thucydides.core.util.EnvironmentVariables;
 import net.thucydides.core.webdriver.WebDriverFacade;
 import net.thucydides.core.webdriver.WebDriverFactory;

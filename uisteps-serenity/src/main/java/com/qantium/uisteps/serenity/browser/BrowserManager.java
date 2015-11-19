@@ -25,7 +25,7 @@ import net.thucydides.core.annotations.Step;
 public class BrowserManager extends com.qantium.uisteps.core.browser.BrowserManager {
 
     public BrowserManager() {
-        super(new BrowserFactory());
+        setBrowserFactory(new BrowserFactory());
     }
 
     @Step
@@ -45,7 +45,7 @@ public class BrowserManager extends com.qantium.uisteps.core.browser.BrowserMana
     public void closeCurrentBrowser() {
         super.closeCurrentBrowser();
     }
-    
+
     @Step
     @Override
     public void closeAllBrowsers() {

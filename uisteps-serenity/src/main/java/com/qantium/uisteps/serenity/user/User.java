@@ -25,7 +25,7 @@ import com.qantium.uisteps.serenity.browser.BrowserManager;
 public class User extends com.qantium.uisteps.core.user.User {
 
     public User() {
-        super(SerenityUtils.getNewStepLibrary(BrowserManager.class));
+        setBrowserManager(SerenityUtils.getNewStepLibrary(BrowserManager.class));
     }
 
 }

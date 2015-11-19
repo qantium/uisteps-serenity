@@ -25,10 +25,10 @@ import org.openqa.selenium.WebDriver;
 public class BrowserFactory extends com.qantium.uisteps.core.browser.BrowserFactory {
 
     @Override
-    public Browser getBrowser(WebDriver withDriver) {
-        setSettingsTo(withDriver);
+    public Browser getBrowser(WebDriver driver) {
+        setSettingsTo(driver);
         Browser browser = SerenityUtils.getNewStepLibrary(Browser.class);
-        browser.setDriver(SerenityUtils.useDriver(withDriver));
+        browser.setDriver(SerenityUtils.useDriver(driver));
         return browser;
     }
 }
