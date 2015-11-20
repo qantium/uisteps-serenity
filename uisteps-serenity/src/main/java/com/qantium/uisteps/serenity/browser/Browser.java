@@ -41,11 +41,12 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
         return ((ProxyWebDriverFacade) super.getDriver()).getProxiedDriver();
     }
 
-    @Step("Open \"{0}\"")
-    public <T extends Page> T open(T page, String... params) {
-        return super.open(page, params);
+    @Step
+    @Override
+    public <T extends Page> T open(T page) {
+        return super.open(page);
     }
-
+    
     @Step
     @Override
     public void deleteAllCookies() {
@@ -60,8 +61,8 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
 
     @Step
     @Override
-    public void refreshCurrentPage() {
-        super.refreshCurrentPage();
+    public void refreshPage() {
+        super.refreshPage();
     }
 
     @Step("On displayed \"{0}\"")
