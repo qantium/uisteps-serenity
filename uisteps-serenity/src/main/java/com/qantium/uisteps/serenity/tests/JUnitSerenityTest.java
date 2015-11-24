@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run.tests;
+package com.qantium.uisteps.serenity.tests;
 
-import com.qantium.uisteps.core.run.tests.JUnitTest;
-import com.qantium.uisteps.serenity.run.storage.Storage;
-import com.qantium.uisteps.serenity.run.verify.Verify;
+import com.qantium.uisteps.core.tests.JUnitTest;
+import com.qantium.uisteps.serenity.storage.Storage;
+import com.qantium.uisteps.serenity.verify.Verify;
 import com.qantium.uisteps.serenity.SerenityUtils;
-import com.qantium.uisteps.serenity.run.verify.Assume;
+import com.qantium.uisteps.serenity.verify.Assume;
 import net.thucydides.core.annotations.Managed;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;

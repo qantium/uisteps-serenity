@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run.sories;
+package com.qantium.uisteps.serenity.stories;
 
 import com.qantium.uisteps.core.browser.BrowserManager;
 import com.qantium.uisteps.serenity.SerenityUtils;

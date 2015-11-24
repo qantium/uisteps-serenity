@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 ASolyankin.
+ * Copyright 2015 A.Solyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,18 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run.storage;
+package com.qantium.uisteps.serenity.tests.parameterised;
 
-import com.qantium.uisteps.serenity.SerenityUtils;
+import com.qantium.uisteps.serenity.tests.UserSerenityTest;
+import org.junit.runner.RunWith;
 
 /**
  *
- * @author ASolyankin
+ * @author A.Solyankin
  */
-public class Storage extends com.qantium.uisteps.core.run.storage.Storage {
-
-    public Storage() {
-        super(SerenityUtils.getCurrentSession());
-    }
-
+@RunWith(JUnitSerenityParameterizedRunner.class)
+public class UserParameterisedTest extends UserSerenityTest {
+    
 }

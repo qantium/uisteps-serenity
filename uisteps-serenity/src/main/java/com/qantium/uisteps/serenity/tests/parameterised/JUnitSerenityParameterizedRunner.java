@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run.tests.parameterised;
+package com.qantium.uisteps.serenity.tests.parameterised;
 
-import com.qantium.uisteps.core.run.tests.JUnitListener;
+import com.qantium.uisteps.core.tests.JUnitListener;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.batches.BatchManager;
 import net.thucydides.core.webdriver.Configuration;

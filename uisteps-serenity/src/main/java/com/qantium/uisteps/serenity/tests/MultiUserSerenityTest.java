@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run.sories;
+package com.qantium.uisteps.serenity.tests;
 
+import com.qantium.uisteps.core.tests.JUnitListener;
 import com.qantium.uisteps.core.user.User;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.user.UserFactory;
@@ -23,15 +24,15 @@ import com.qantium.uisteps.serenity.user.UserFactory;
  *
  * @author ASolyankin
  */
-public class MultiUserStory extends Story {
+public class MultiUserSerenityTest extends JUnitSerenityTest {
 
     public final UserFactory users;
 
-    public MultiUserStory() {
-        this(new StoryListener());
+    public MultiUserSerenityTest() {
+        this(new JUnitListener());
     }
 
-    public MultiUserStory(StoryListener listener) {
+    public MultiUserSerenityTest(JUnitListener listener) {
         this.users = SerenityUtils.getNewStepLibrary(UserFactory.class);
     }
 

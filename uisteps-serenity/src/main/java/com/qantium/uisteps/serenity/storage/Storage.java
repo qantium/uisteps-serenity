@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 A.Solyankin.
+ * Copyright 2015 ASolyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,22 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run.sories;
+package com.qantium.uisteps.serenity.storage;
 
-import com.qantium.uisteps.serenity.user.User;
+import com.qantium.uisteps.core.storage.Saved;
+import java.io.File;
+import net.thucydides.core.annotations.Step;
 
 /**
  *
- * @author A.Solyankin
+ * @author ASolyankin
  */
-public class UserStory extends BaseUserStory {
+public class Storage extends com.qantium.uisteps.core.storage.Storage {
 
-    public UserStory() {
-        super(new StoryListener(), User.class);
-    }
-
-    public UserStory(StoryListener listener) {
-        super(listener, User.class);
+    @Step
+    @Override
+    public File save(Saved file) {
+        return super.save(file);
     }
 
 }

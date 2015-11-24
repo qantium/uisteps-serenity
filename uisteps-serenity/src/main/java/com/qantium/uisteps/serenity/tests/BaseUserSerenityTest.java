@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run.verify;
+package com.qantium.uisteps.serenity.tests;
 
-import com.qantium.uisteps.core.run.verify.results.Result;
-import net.thucydides.core.annotations.Step;
+import com.qantium.uisteps.serenity.SerenityUtils;
+import com.qantium.uisteps.serenity.user.User;
 
 /**
  *
  * @author A.Solyankin
+ * @param <U>
  */
-public class Assume extends com.qantium.uisteps.core.run.verify.Assume {
+public class BaseUserSerenityTest<U extends User> extends JUnitSerenityTest {
 
-    @Step
-    @Override
-    public Result result(Result result) {
-        return super.result(result);
+    public final U user;
+
+    public BaseUserSerenityTest(Class<U> user) {
+        this.user = SerenityUtils.getNewStepLibrary(user);
     }
-
 }

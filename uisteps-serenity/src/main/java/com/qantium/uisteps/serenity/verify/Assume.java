@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 ASolyankin.
+ * Copyright 2015 A.Solyankin.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run.tests;
+package com.qantium.uisteps.serenity.verify;
 
-import com.qantium.uisteps.serenity.user.User;
+import com.qantium.uisteps.core.verify.results.Result;
+import net.thucydides.core.annotations.Step;
 
 /**
  *
- * @author ASolyankin
+ * @author A.Solyankin
  */
-public class UserSerenityTest extends BaseUserSerenityTest {
+public class Assume extends com.qantium.uisteps.core.verify.Assume {
 
-    public UserSerenityTest() {
-        super(User.class);
+    @Step
+    @Override
+    public Result result(Result result) {
+        return super.result(result);
     }
+
 }

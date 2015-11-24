@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run.tests;
+package com.qantium.uisteps.serenity.tests;
 
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import com.qantium.uisteps.core.run.tests.JUnitListener;
+import com.qantium.uisteps.core.tests.JUnitListener;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.batches.BatchManager;
 import net.thucydides.core.webdriver.Configuration;

@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qantium.uisteps.serenity.run.sories;
+package com.qantium.uisteps.serenity.stories;
 
-import com.qantium.uisteps.core.name.Named;
-import com.qantium.uisteps.serenity.run.storage.Storage;
-import com.qantium.uisteps.serenity.run.verify.Verify;
+import com.qantium.uisteps.serenity.storage.Storage;
+import com.qantium.uisteps.serenity.verify.Verify;
 import com.qantium.uisteps.serenity.SerenityUtils;
-import com.qantium.uisteps.serenity.run.verify.Assume;
+import com.qantium.uisteps.serenity.verify.Assume;
 import net.serenitybdd.jbehave.SerenityStory;
 
 /**
@@ -42,25 +41,4 @@ public class Story extends SerenityStory {
         this.storage = SerenityUtils.getNewStepLibrary(Storage.class);
         listener.register();
     }
-
-    public <T> T remember(String key, T value) {
-        return storage.remember(key, value);
-    }
-
-    public <T extends Named> T remember(T value) {
-        return storage.remember(value);
-    }
-
-    public <T> T remember(T value) {
-        return storage.remember(value);
-    }
-
-    public <T> T remembered(String key) {
-        return storage.remembered(key);
-    }
-
-    public <T> T remembered(Class<T> key) {
-        return storage.remembered(key);
-    }
-
 }
