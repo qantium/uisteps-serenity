@@ -16,6 +16,7 @@
 package com.qantium.uisteps.serenity.browser;
 
 import com.qantium.uisteps.core.browser.pages.Page;
+import com.qantium.uisteps.core.browser.pages.UIElement;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.core.browser.pages.UIObject;
 import com.qantium.uisteps.core.browser.pages.elements.CheckBox;
@@ -23,12 +24,16 @@ import com.qantium.uisteps.core.browser.pages.elements.FileInput;
 import com.qantium.uisteps.core.browser.pages.elements.RadioButtonGroup.RadioButton;
 import com.qantium.uisteps.core.browser.pages.elements.Select.Option;
 import com.qantium.uisteps.core.browser.pages.elements.Select;
+import com.qantium.uisteps.core.screenshots.Ignored;
+import com.qantium.uisteps.core.screenshots.Photographer;
+import com.qantium.uisteps.core.screenshots.Screenshot;
 import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
 import net.thucydides.core.annotations.Step;
-import org.openqa.selenium.Dimension;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.internal.WrapsElement;
+import ru.yandex.qatools.ashot.coordinates.Coords;
 
 /**
  *
@@ -46,7 +51,7 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     public <T extends Page> T open(T page) {
         return super.open(page);
     }
-    
+
     @Step
     @Override
     public void deleteAllCookies() {
@@ -121,12 +126,6 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
         super.moveWindowTo(newX, newY);
     }
 
-    @Step
-    @Override
-    public void maximizeWindow() {
-        super.maximizeWindow();
-    }
-
     //Window size
     @Step("Set window size to {0} x {1}")
     @Override
@@ -137,7 +136,6 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     @Step("Set window width to {0}")
     @Override
     public void setWindowWidth(int width) {
-        getDriver().manage().window().setSize(new Dimension(width, getWindowSize().getHeight()));
         super.setWindowWidth(width);
     }
 
@@ -147,7 +145,14 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
         super.setWindowHeight(height);
     }
 
+    @Step
+    @Override
+    public void maximizeWindow() {
+        super.maximizeWindow();
+    }
+
     //Elements
+
     @Step
     @Override
     public void clear(WrapsElement input) {
@@ -311,6 +316,42 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     @Override
     public <T extends UIObject> T instatiate(Class<T> uiObject) {
         return SerenityUtils.getNewStepLibrary(uiObject);
+    }
 
+    //Screenshots
+    @Step
+    @Override
+    public Photographer inScreenshotIgnoring(By... locators) {
+        return super.inScreenshotIgnoring(locators);
+    }
+
+    @Step
+    @Override
+    public Photographer inScreenshotIgnoring(UIElement... elements) {
+        return super.inScreenshotIgnoring(elements);
+    }
+
+    @Step
+    @Override
+    public Photographer inScreenshotIgnoring(Coords... areas) {
+        return super.inScreenshotIgnoring(areas);
+    }
+
+    @Step
+    @Override
+    public Screenshot takeScreenshot() {
+        return super.takeScreenshot();
+    }
+
+    @Step
+    @Override
+    public Screenshot takeScreenshot(UIElement... elements) {
+        return super.takeScreenshot(elements);
+    }
+
+    @Step
+    @Override
+    public Screenshot takeScreenshot(Ignored... elements) {
+        return super.takeScreenshot(elements);
     }
 }
