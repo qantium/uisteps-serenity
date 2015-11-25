@@ -354,4 +354,9 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     public Screenshot takeScreenshot(Ignored... elements) {
         return super.takeScreenshot(elements);
     }
+
+    @Override
+    protected void setDriver(WebDriver driver) {
+        super.setDriver(driver);
+    }
 }

@@ -15,7 +15,6 @@
  */
 package com.qantium.uisteps.serenity.tests;
 
-import com.qantium.uisteps.core.tests.JUnitListener;
 import com.qantium.uisteps.core.user.User;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.user.UserFactory;
@@ -29,10 +28,6 @@ public class MultiUserSerenityTest extends JUnitSerenityTest {
     public final UserFactory users;
 
     public MultiUserSerenityTest() {
-        this(new JUnitListener());
-    }
-
-    public MultiUserSerenityTest(JUnitListener listener) {
         this.users = SerenityUtils.getNewStepLibrary(UserFactory.class);
     }
 
