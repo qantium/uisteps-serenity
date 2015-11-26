@@ -24,6 +24,9 @@ import org.openqa.selenium.WebDriver;
  */
 public class BrowserFactory extends com.qantium.uisteps.core.browser.BrowserFactory {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Browser getBrowser(WebDriver driver) {
         setSettingsTo(driver);
