@@ -19,12 +19,15 @@ import com.qantium.uisteps.serenity.SerenityUtils;
 import org.openqa.selenium.WebDriver;
 
 /**
- *
+ * {@inheritDoc}
+ * 
  * @author ASolyankin
  */
 public class BrowserFactory extends com.qantium.uisteps.core.browser.BrowserFactory {
 
     /**
+     * Get browser as step library
+     * 
      * {@inheritDoc}
      */
     @Override
