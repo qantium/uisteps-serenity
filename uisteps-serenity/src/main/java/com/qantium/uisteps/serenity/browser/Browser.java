@@ -31,7 +31,6 @@ import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.internal.WrapsElement;
 import ru.yandex.qatools.ashot.coordinates.Coords;
@@ -292,44 +291,30 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     }
 
     //Scroll
-    @Step("Scroll \"{0}\" with offset ({1}; {2})")
+    @Step("Move \"{0}\" to \"{1}\"")
     @Override
-    public void scroll(WrapsElement element, int x, int y) {
-        super.scroll(element, x, y);
+    public void scrollToTarget(WrapsElement scroll, WrapsElement target) {
+        super.scrollToTarget(scroll, target);
     }
-    
-    @Step("Horizontal scroll \"{0}\" with offset ({1}; {2})")
+
+    @Step("Move \"{0}\" to \"{1}\"")
     @Override
-    public void horizontalScroll(WrapsElement element, int pixels) {
-        super.horizontalScroll(element, pixels);
+    public void horizontalScroll(WrapsElement scroll, int pixels) {
+        super.horizontalScroll(scroll, pixels);
     }
-    
-    
-    @Step("Vertical scroll \"{0}\" with offset ({1}; {2})")
+
+    @Step("Move \"{0}\" to \"{1}\"")
     @Override
-    public void verticalScroll(WrapsElement element, int pixels) {
-        super.verticalScroll(element, pixels);
-        
+    public void verticalScroll(WrapsElement scroll, int pixels) {
+        super.verticalScroll(scroll, pixels);
     }
-    
-    @Step("Scroll \"{0}\" with offset ({1}; {2}) and hold")
+
+    @Step("Move \"{0}\" by offset ({1}; {2})")
     @Override
-    public void scrollAndHold(WrapsElement element, int x, int y) {
-        super.scrollAndHold(element, x, y);
+    public void scroll(WrapsElement scroll, int x, int y) {
+        super.scroll(scroll, x, y);
     }
-    
-    @Step("Horizontal scroll \"{0}\" with offset ({1}; {2}) and hold")
-    @Override
-    public void horizontalScrollAndHold(WrapsElement element, int pixels) {
-        super.horizontalScrollAndHold(element, pixels);
-    }
-    
-    @Step("Vertical scroll \"{0}\" with offset ({1}; {2}) and hold")
-    @Override
-    public void verticalScrollAndHold(WrapsElement element, int pixels) {
-        super.verticalScrollAndHold(element, pixels);
-    }
-    
+
     //Select
     @Step("Select \"{0}\"")
     @Override
