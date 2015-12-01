@@ -31,7 +31,9 @@ import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsElement;
 import ru.yandex.qatools.ashot.coordinates.Coords;
 
@@ -291,6 +293,24 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     }
 
     //Scroll
+    @Step("Scroll window by offset ({0}; {1})")
+    @Override
+    public void scrollWindowByOffset(int x, int y) {
+        super.scrollWindowByOffset(x, y);
+    }
+
+    @Step("Scroll window to {0}")
+    @Override
+    public void scrollWindowToTarget(WrapsElement element) {
+        super.scrollWindowToTarget(element);
+    }
+
+    @Step("Scroll window to {0} by offset ({1}; {2})")
+    @Override
+    public void scrollWindowToTargetByOffset(WrapsElement element, int x, int y) {
+        super.scrollWindowToTargetByOffset(element, x, y);
+    }
+
     @Step("Move \"{0}\" to \"{1}\"")
     @Override
     public void scrollToTarget(WrapsElement scroll, WrapsElement target) {
