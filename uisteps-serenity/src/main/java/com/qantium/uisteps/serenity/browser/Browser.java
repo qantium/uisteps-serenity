@@ -375,10 +375,10 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     }
 
     //FileInput
-    @Step("Set to \"{0}\" file \"{1}\"")
+    @Step("Upload file \"{1}\" to \"{0}\"")
     @Override
-    public void setTo(FileInput fileInput, String filePath) {
-        super.setTo(fileInput, filePath);
+    public void setFileToUpload(FileInput fileInput, String filePath) {
+        super.setFileToUpload(fileInput, filePath);
     }
 
     @Override
