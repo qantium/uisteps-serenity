@@ -104,7 +104,7 @@ public class SerenityUtils {
 
         drivers.registerDriverCalled(driverName).forDriver(webDriverFacade);
         useDriver(driverName);
-        return webDriverFacade;
+        return driver;
     }
 
     public static void useDriver(String driverName) {

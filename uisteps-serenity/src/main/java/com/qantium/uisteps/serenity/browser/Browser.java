@@ -31,9 +31,7 @@ import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsElement;
 import ru.yandex.qatools.ashot.coordinates.Coords;
 
@@ -42,11 +40,6 @@ import ru.yandex.qatools.ashot.coordinates.Coords;
  * @author ASolyankin
  */
 public class Browser extends com.qantium.uisteps.core.browser.Browser {
-
-    @Override
-    public WebDriver getDriver() {
-        return ((ProxyWebDriverFacade) super.getDriver()).getProxiedDriver();
-    }
 
     @Step
     @Override
@@ -76,6 +69,19 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     @Override
     public <T extends UIObject> T onDisplayed(T uiObject) {
         return super.onDisplayed(uiObject);
+    }
+
+    //Navigation
+    @Step
+    @Override
+    public void goBack() {
+        super.goBack();
+    }
+
+    @Step
+    @Override
+    public void goForward() {
+        super.goForward();
     }
 
     //Window
