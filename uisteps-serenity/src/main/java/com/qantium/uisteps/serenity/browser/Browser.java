@@ -27,7 +27,6 @@ import com.qantium.uisteps.core.browser.pages.elements.Select;
 import com.qantium.uisteps.core.screenshots.Ignored;
 import com.qantium.uisteps.core.screenshots.Photographer;
 import com.qantium.uisteps.core.screenshots.Screenshot;
-import com.qantium.uisteps.serenity.ProxyWebDriverFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -432,5 +431,11 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     @Override
     protected void setDriver(WebDriver driver) {
         super.setDriver(driver);
+    }
+    
+    @Step("Wait until {0} is displayed")
+    @Override
+    public void waitUntilIsDisplayed(UIObject uiObject) {
+        super.waitUntilIsDisplayed(uiObject);
     }
 }
