@@ -16,6 +16,7 @@
 package com.qantium.uisteps.serenity.tests;
 
 import com.qantium.uisteps.serenity.user.User;
+import org.junit.runner.RunWith;
 
 /**
  *

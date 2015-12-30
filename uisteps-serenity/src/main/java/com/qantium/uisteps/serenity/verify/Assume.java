@@ -26,8 +26,7 @@ public class Assume extends com.qantium.uisteps.core.verify.Assume {
 
     @Step
     @Override
-    public Result result(Result result) {
-        return super.result(result);
+    public void result(Result result) {
+        super.result(result);
     }
-
 }

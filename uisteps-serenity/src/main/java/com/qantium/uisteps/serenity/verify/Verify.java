@@ -11,8 +11,8 @@ public class Verify extends com.qantium.uisteps.core.verify.Verify {
 
     @Step
     @Override
-    public Result result(Result result) {
-        return super.result(result);
+    public void result(Result result) {
+        super.result(result);
     }
 
 }

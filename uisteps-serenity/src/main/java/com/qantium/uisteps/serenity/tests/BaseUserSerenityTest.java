@@ -23,7 +23,7 @@ import com.qantium.uisteps.serenity.user.User;
  * @author A.Solyankin
  * @param <U> specifies the type of user
  */
-public class BaseUserSerenityTest<U extends User> extends JUnitSerenityTest {
+public class BaseUserSerenityTest<U extends User> extends BaseSerenityTest {
 
     public final U user;
 

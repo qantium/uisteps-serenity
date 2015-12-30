@@ -15,20 +15,31 @@
  */
 package com.qantium.uisteps.serenity.tests;
 
+import com.qantium.uisteps.core.tests.MultiUserTest;
 import com.qantium.uisteps.core.user.User;
 import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.user.UserFactory;
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Managed;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 
 /**
  *
  * @author ASolyankin
  */
-public class MultiUserSerenityTest extends JUnitSerenityTest {
+@RunWith(SerenityRunner.class)
+public class MultiUserSerenityTest extends MultiUserTest {
 
-    public final UserFactory users;
+    @Managed
+    WebDriver driver;
+
+    public MultiUserSerenityTest(UserFactory users) {
+        super(users);
+    }
 
     public MultiUserSerenityTest() {
-        this.users = SerenityUtils.getNewStepLibrary(UserFactory.class);
+        this(SerenityUtils.getNewStepLibrary(UserFactory.class));
     }
 
     public User by(String user) {

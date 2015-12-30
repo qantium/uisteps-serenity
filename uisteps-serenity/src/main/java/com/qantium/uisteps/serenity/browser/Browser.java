@@ -40,10 +40,10 @@ import ru.yandex.qatools.ashot.coordinates.Coords;
  */
 public class Browser extends com.qantium.uisteps.core.browser.Browser {
 
-    @Step
+    @Step("Open {0}")
     @Override
-    public <T extends Page> T open(T page) {
-        return super.open(page);
+    public <T extends Page> T openPage(T page) {
+        return super.openPage(page);
     }
 
     @Step
@@ -431,11 +431,5 @@ public class Browser extends com.qantium.uisteps.core.browser.Browser {
     @Override
     protected void setDriver(WebDriver driver) {
         super.setDriver(driver);
-    }
-    
-    @Step("Wait until {0} is displayed")
-    @Override
-    public void waitUntilIsDisplayed(UIObject uiObject) {
-        super.waitUntilIsDisplayed(uiObject);
     }
 }
