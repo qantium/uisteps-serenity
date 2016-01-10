@@ -42,6 +42,7 @@ public class MultiUserSerenityTest extends MultiUserTest {
         this(SerenityUtils.getNewStepLibrary(UserFactory.class));
     }
 
+    @Override
     public User by(String user) {
         return users.by(user);
     }
@@ -50,14 +51,17 @@ public class MultiUserSerenityTest extends MultiUserTest {
         users.add(user);
     }
 
+    @Override
     public void add(String name, Class<? extends User> user) {
         users.add(name, user);
     }
 
+    @Override
     public <T extends User> T by(Class<T> user) {
         return users.by(user);
     }
 
+    @Override
     public <T extends User> T by(String name, Class<T> user) {
         return users.by(name, user);
     }
