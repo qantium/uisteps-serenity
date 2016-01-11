@@ -20,11 +20,14 @@ import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.storage.Storage;
 import com.qantium.uisteps.serenity.verify.Assume;
 import com.qantium.uisteps.serenity.verify.Verify;
+import net.serenitybdd.junit.runners.SerenityRunner;
+import org.junit.runner.RunWith;
 
 /**
  *
  * @author ASolyankin
  */
+@RunWith(SerenityRunner.class)
 public class BaseSerenityTest extends BaseTest {
 
     public BaseSerenityTest() {
