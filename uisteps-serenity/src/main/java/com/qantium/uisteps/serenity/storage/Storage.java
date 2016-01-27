@@ -27,8 +27,12 @@ public class Storage extends com.qantium.uisteps.core.storage.Storage {
 
     @Step
     @Override
-    public File save(Saved file) {
+    protected File save(Saved file) {
         return super.save(file);
     }
 
+    @Override
+    protected void saveFile(String dir, String path) {
+        super.saveFile("", path);
+    }
 }
