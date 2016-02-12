@@ -25,15 +25,24 @@ import org.junit.runner.RunWith;
 
 /**
  *
- * @author ASolyankin
+ * @author Anton Solyankin
  */
 @RunWith(SerenityRunner.class)
 public class BaseSerenityTest extends BaseTest {
 
-    public BaseSerenityTest() {
-        super(SerenityUtils.getNewStepLibrary(Verify.class),
-                SerenityUtils.getNewStepLibrary(Assume.class),
-                SerenityUtils.getNewStepLibrary(Storage.class));
+    @Override
+    protected Verify getAssertions() {
+        return SerenityUtils.getNewStepLibrary(Verify.class);
+    }
+
+    @Override
+    protected Assume getAssumtions() {
+        return SerenityUtils.getNewStepLibrary(Assume.class);
+    }
+
+    @Override
+    protected Storage getStorage() {
+        return SerenityUtils.getNewStepLibrary(Storage.class);
     }
 
 }

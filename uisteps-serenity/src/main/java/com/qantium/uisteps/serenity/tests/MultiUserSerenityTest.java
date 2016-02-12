@@ -18,15 +18,17 @@ package com.qantium.uisteps.serenity.tests;
 import com.qantium.uisteps.core.tests.MultiUserTest;
 import com.qantium.uisteps.core.user.User;
 import com.qantium.uisteps.serenity.SerenityUtils;
+import com.qantium.uisteps.serenity.storage.Storage;
 import com.qantium.uisteps.serenity.user.UserFactory;
+import com.qantium.uisteps.serenity.verify.Assume;
+import com.qantium.uisteps.serenity.verify.Verify;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 /**
- *
- * @author ASolyankin
+ * @author Anton Solyankin
  */
 @RunWith(SerenityRunner.class)
 public class MultiUserSerenityTest extends MultiUserTest {
@@ -66,4 +68,18 @@ public class MultiUserSerenityTest extends MultiUserTest {
         return users.by(name, user);
     }
 
+    @Override
+    protected Verify getAssertions() {
+        return new Verify();
+    }
+
+    @Override
+    protected Assume getAssumtions() {
+        return new Assume();
+    }
+
+    @Override
+    protected Storage getStorage() {
+        return new Storage();
+    }
 }

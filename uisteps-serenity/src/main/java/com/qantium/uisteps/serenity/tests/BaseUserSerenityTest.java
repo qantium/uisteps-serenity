@@ -15,19 +15,40 @@
  */
 package com.qantium.uisteps.serenity.tests;
 
+import com.qantium.uisteps.core.tests.BaseUserTest;
 import com.qantium.uisteps.serenity.SerenityUtils;
+import com.qantium.uisteps.serenity.storage.Storage;
 import com.qantium.uisteps.serenity.user.User;
+import com.qantium.uisteps.serenity.verify.Assume;
+import com.qantium.uisteps.serenity.verify.Verify;
 
 /**
- *
- * @author A.Solyankin
  * @param <U> specifies the type of user
+ * @author Anton Solyankin
  */
-public class BaseUserSerenityTest<U extends User> extends BaseSerenityTest {
-
-    public final U user;
+public class BaseUserSerenityTest<U extends User> extends BaseUserTest<U> {
 
     public BaseUserSerenityTest(Class<U> user) {
-        this.user = SerenityUtils.getNewStepLibrary(user);
+        super(user);
+    }
+
+    @Override
+    protected <U extends com.qantium.uisteps.core.user.User> U instatiate(Class<U> user) {
+        return SerenityUtils.getNewStepLibrary(user);
+    }
+
+    @Override
+    protected Verify getAssertions() {
+        return new Verify();
+    }
+
+    @Override
+    protected Assume getAssumtions() {
+        return new Assume();
+    }
+
+    @Override
+    protected Storage getStorage() {
+        return new Storage();
     }
 }

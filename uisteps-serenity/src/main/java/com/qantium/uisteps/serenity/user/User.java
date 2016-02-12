@@ -19,12 +19,12 @@ import com.qantium.uisteps.serenity.SerenityUtils;
 import com.qantium.uisteps.serenity.browser.BrowserManager;
 
 /**
- *
  * @author ASolyankin
  */
 public class User extends com.qantium.uisteps.core.user.User {
 
-    public User() {
+    @Override
+    protected void setBrowserManager() {
         setBrowserManager(SerenityUtils.getNewStepLibrary(BrowserManager.class));
     }
 

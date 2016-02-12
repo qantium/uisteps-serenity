@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
 
 /**
  *
- * @author ASolyankin
+ * @author Anton Solyankin
  */
 public class UserSerenityTest extends BaseUserSerenityTest {
 
